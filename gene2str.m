@@ -22,7 +22,7 @@ if (~isempty(gene))
         bS = sprintf('+backtrack(%0.1f)',learningQuota);
     end
     if (da)
-        daS = '+da';
+        daS = sprintf('+da(%0.1f)',da);
     end
     if (markExpendable)
         eS = '+E';

@@ -30,7 +30,7 @@ parfor n = 1:nProblems
     
     % Run the algorithm
     [solution, sc(n), solved(n)] =  ...
-        uLRTA_mex(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,gene);
+        uLRTA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,gene);
     
     subopt(n) = solution / hs;
 end

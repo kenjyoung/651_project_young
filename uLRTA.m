@@ -52,12 +52,13 @@ while (i ~= iGoal && distTraveled < cutOff)
         return
     end
             
-    fNMove = fN;
     if (da)
         %Select the move as argmin f+C*Delta
         deltaN = abs(hN - hN0);
-        fNMove = fNmove + da*deltaN
+        fNMove = fN + da*deltaN;
     else
+        fNMove = fN;
+    end
         
     % Select the move as arg min f
     [~,minIndex] = min(fNMove);
