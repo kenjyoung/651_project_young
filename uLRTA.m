@@ -8,7 +8,7 @@ function [distTraveled, meanScrubbing, solved] = uLRTA(i,map,goal,neighborhoodI,
 % Unpack the gene                                          
 w = gene(1);
 wc = gene(2);
-da = round(gene(3));
+da = gene(3);
 markExpendable = round(gene(4));
 %backtrack = round(gene(5));
 learningOperator = round(gene(6));
@@ -52,15 +52,13 @@ while (i ~= iGoal && distTraveled < cutOff)
         return
     end
             
-    % Mask out all neighbors with non-minimal deltas
     fNMove = fN;
     if (da)
+        %Select the move as argmin f+C*Delta
         deltaN = abs(hN - hN0);
-        minDeltaN = min(deltaN);
-        minDeltaMask = abs(deltaN - minDeltaN) < 0.0001;
-        fNMove(~minDeltaMask) = Inf;
-    end
-    
+        fNMove = fNmove + da*deltaN
+    else
+        
     % Select the move as arg min f
     [~,minIndex] = min(fNMove);
     iNext = iN(minIndex);

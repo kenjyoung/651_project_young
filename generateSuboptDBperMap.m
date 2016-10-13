@@ -20,7 +20,7 @@ numAlgorithms = 10;
 
 % Excludes backtracking
 geneMin = [1, 1, 0, 0, 0, 1, 0, 0];
-geneMax = [10, 10, 1, 1, 0, 4, 1, 0];
+geneMax = [10, 10, 10, 1, 0, 4, 1, 0];
 
 %w = gene(1);
 %wc = gene(2);

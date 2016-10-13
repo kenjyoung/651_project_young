@@ -5,7 +5,7 @@ function str = gene2str(gene)
 
 w = gene(1);
 wc = gene(2);
-da = round(gene(3));
+da = gene(3);
 markExpendable = round(gene(4));
 backtrack = round(gene(5));
 learningOperator = round(gene(6));
