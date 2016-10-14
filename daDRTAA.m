@@ -1,4 +1,4 @@
-function [distTraveled, meanScrubbing, solved] = daLRTA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth)
+function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth, commit_steps)
 %% Returns the expected distance traveled to a goal state
 %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
 % Vadim Bulitko
@@ -64,46 +64,17 @@ while (i ~= iGoal && distTraveled < cutOff)
         portionFNS = fNSorted(1:ceil(length(fNSorted)*beamWidth));
     end
     
-    % Update the heuristic
-    newH = hI;
-    switch (learningOperator)
-        case 1
-            newH = max(hI,w*min(portionFNS));
-        case 2
-            newH = max(hI,w*mean(portionFNS));
-        case 3
-            newH = max(hI,w*median(portionFNS));
-        case 4
-            newH = max(hI,w*max(portionFNS));
+    closed, g, best = Astar(i, map, goal, neighborhoodI, gCost, h, k);
+    
+    
+    for j=1:size(closed)
+       s = closed(j);
+       hnew = best-g(s);
+       updateMagnitude = abs(h(s) - hnew);
+       hUpdate =  updateMagnitude > 0.0001;
+       totalLearning = totalLearning + updateMagnitude;
+       h = setH(s,newH,h,errorRate); 
     end
-    
-    updateMagnitude = abs(hI - newH);
-    hUpdate =  updateMagnitude > 0.0001;
-    totalLearning = totalLearning + updateMagnitude;
-    h = setH(i,newH,h,errorRate);
-    
-    % Remove the current state from the search graph if it is expendable AND we updated its heuristic
-    if (markExpendable && hUpdate && expendable(availableN))
-        map(i) = true;
-    end
-    
-    % Move
-%     %iOld = i;
-%     if (backtrack && hUpdate && totalLearning > learningQuota)
-%         % Backtrack
-%         if (~isempty(iPrevious))
-%             i = iPrevious(end);
-%             iNextDist = iPreviousCost(end);
-%             iPrevious = iPrevious(1:end-1);
-%             iPreviousCost = iPreviousCost(1:end-1);
-%         end
-%     else
-%         % Go forward
-%         iPrevious = [iPrevious i]; %#ok<AGROW>
-%         iPreviousCost = [iPreviousCost iNextDist];  %#ok<AGROW>
-%         i = iNext;
-%     end
-    i = iNext;
     
     distTraveled = distTraveled + iNextDist;
 

@@ -1,4 +1,4 @@
-function [path, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
+function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
     %TODO: finish this maybe if needed
     mapSize = size(map);
     g = containers.Map;
@@ -7,6 +7,8 @@ function [path, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
     g(i) = 0;
     p(i) = i;
     d(i) = 0;
+    
+    closed = [];
     
     open = [];
     open_value = [];
@@ -22,6 +24,9 @@ function [path, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
         i = open(open_index);
         
         open(open_index) = [];
+        
+        closed(end+1) = i;
+        
         
         expansions = expansions + 1;
         % Generate the neighborhood
