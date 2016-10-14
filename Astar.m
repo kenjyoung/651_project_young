@@ -47,23 +47,24 @@ function [path, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
                   open_value(existing) = [];
                   
                   %Add n to open list with new f value
-                  open{end+1} = n;
-                  open_value{end+1} = g(n)+h(n);
+                  open(end+1) = n;
+                  open_value(end+1) = g(n)+h(n);
               end
            end
         end
-        
-        if(open.size()~=0)
-            [best, best_index] = min(open_value);
-            best_state = open(best_index);
-        end
-        path = [best_state];
-        curr = best_state;
-        prev = p(curr);
-        while prev ~=curr
-            path{end+1} = prev;
-            curr = prev;
-            prev = p(curr);
-        end 
     end
+    
+    if(open.size()~=0)
+        [best, best_index] = min(open_value);
+        best_state = open(best_index);
+    end
+    path = [best_state];
+    curr = best_state;
+    prev = p(curr);
+    while prev ~=curr
+        path(end+1) = prev;
+        curr = prev;
+        prev = p(curr);
+    end 
+    path = fliplr(path);
 end
