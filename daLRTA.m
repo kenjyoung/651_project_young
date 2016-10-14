@@ -1,20 +1,10 @@
-function [distTraveled, meanScrubbing, solved] = daLRTA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff)
+function [distTraveled, meanScrubbing, solved] = daLRTA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth)
 %% Returns the expected distance traveled to a goal state
 %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
 % Vadim Bulitko
 % February 25, 2016
 
 %% Preliminaries
-% Unpack the gene                                          
-w = gene(1);
-wc = gene(2);
-da = gene(3);
-markExpendable = round(gene(4));
-%backtrack = round(gene(5));
-learningOperator = round(gene(6));
-beamWidth = gene(7);
-%learningQuota = gene(8);
-
 % Set initial parameters
 mapSize = size(map);
 iGoal = sub2ind(mapSize,goal.y,goal.x);
