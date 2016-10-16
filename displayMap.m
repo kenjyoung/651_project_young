@@ -20,7 +20,7 @@ if (nargin >= 2)
         f(nzi) = log(f(nzi));
     end
     maxF = max(max(f));
-    assert(maxF > 0);
+    assert(isempty(nzi) || maxF > 0);
     nShades = 99;
     cm = makeColorMap([1 1 1],fColor,nShades+1);
     for i = nzi
