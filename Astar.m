@@ -1,9 +1,9 @@
 function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
     %TODO: finish this maybe if needed
     mapSize = size(map);
-    g = containers.Map;
-    p = containers.Map; %parent
-    d = containers.Map; %depth
+    g = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32');
+    p = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %parent
+    d = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %depth
     g(i) = 0;
     p(i) = i;
     d(i) = 0;
@@ -17,7 +17,8 @@ function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
     open_value(end+1) = h(i);
     
     expansions = 0;
-    while expansions < k && open.size()~=0 && i ~= goal
+    size(open)
+    while expansions < k && size(open,1)~=0 && i ~= goal
         % Remove min f value from open list
         [~, open_index] = min(open_value);
         open_value(open_index) = [];

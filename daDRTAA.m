@@ -1,4 +1,4 @@
-function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth, commit_steps)
+function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth)
 %% Returns the expected distance traveled to a goal state
 %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
 % Vadim Bulitko
@@ -18,7 +18,7 @@ nVisits = zeros(mapSize);
 totalLearning = 0;
 
 % As long as we haven't reached the goal and haven't run out of quota
-while (i ~= iGoal && distTraveled < cutOff)
+while i ~= iGoal && distTraveled < cutOff
 
     % Mark the visit
     nVisits(i) = nVisits(i) + 1;
@@ -54,26 +54,17 @@ while (i ~= iGoal && distTraveled < cutOff)
     [~,minIndex] = min(fNMove);
     iNext = iN(minIndex);
     iNextDist = gN(minIndex);
-
-    % Take a subset of the neighborhood as determined by the beam width
-    [~, fNSortedI] = sort(fN, 'ascend');
-    fNSorted = wc*gN(fNSortedI) + hN(fNSortedI);
-    if (beamWidth == 0)
-        portionFNS = fNSorted(1);
-    else
-        portionFNS = fNSorted(1:ceil(length(fNSorted)*beamWidth));
-    end
     
-    closed, g, best = Astar(i, map, goal, neighborhoodI, gCost, h, k);
+    [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, h, depth);
     
     
     for j=1:size(closed)
        s = closed(j);
        hnew = best-g(s);
        updateMagnitude = abs(h(s) - hnew);
-       hUpdate =  updateMagnitude > 0.0001;
+       hUpdate = updateMagnitude > 0.0001;
        totalLearning = totalLearning + updateMagnitude;
-       h = setH(s,newH,h,errorRate); 
+       h = setH(s,newH,h,errorRate);
     end
     
     distTraveled = distTraveled + iNextDist;
