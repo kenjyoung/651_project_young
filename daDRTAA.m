@@ -78,6 +78,7 @@ while i ~= iGoal && distTraveled < cutOff
     for j=1:size(closed)
        s = closed(j);
        hnew = best-g(s);
+       assert(hnew>=h0(s))
        updateMagnitude = abs(h(s) - hnew);
        hUpdate = updateMagnitude > 0.0001;
        totalLearning = totalLearning + updateMagnitude;

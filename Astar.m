@@ -4,9 +4,9 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
     unreachable = false;
     mapSize = size(map);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
-    g = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32');
-    p = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %parent
-    d = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %depth
+    g = containers.Map('KeyType', 'uint32', 'ValueType', 'double');
+    p = containers.Map('KeyType', 'uint32', 'ValueType', 'double'); %parent
+    d = containers.Map('KeyType', 'uint32', 'ValueType', 'double'); %depth
     g(i) = 0;
     p(i) = i;
     d(i) = 0;
@@ -25,7 +25,6 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
         [~, open_index] = min(open_value);
         open_value(open_index) = [];
         i = open(open_index);
-        
         open(open_index) = [];
         
         closed(end+1) = i;
@@ -39,9 +38,8 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
         gN = gCost(availableN);
         hN = getH(iN,h,errorRate);
         fN = gN + hN;
-        
         % Update neighbors and open list
-        for j=1:size(iN)
+        for j=1:size(iN,2)
            n = iN(j);
            if ~isKey(g,n) || g(n) > g(i) + gN(j)
               g(n) = g(i)+gN(j);
