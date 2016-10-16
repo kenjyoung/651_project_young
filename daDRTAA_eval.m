@@ -30,7 +30,7 @@ parfor n = 1:nProblems
     
     % Run the algorithm
     [solution, sc(n), solved(n)] =  ...
-        daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth);
+        daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,false);
     
     subopt(n) = solution / hs;
 end

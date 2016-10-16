@@ -1,4 +1,4 @@
-function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff, da, depth)
+function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff,da,depth,visualize)
 %% Returns the expected distance traveled to a goal state
 %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
 % Vadim Bulitko
@@ -19,6 +19,15 @@ totalLearning = 0;
 
 % As long as we haven't reached the goal and haven't run out of quota
 while i ~= iGoal && distTraveled < cutOff
+    % Visualize
+    if(visualize)
+        cla
+        displayMap(map,h-h0,[0 0 1],false);
+        [current.y, current.x] = ind2sub(mapSize,i);
+        dispStartGoal(current,goal);
+        drawnow
+    end
+    
     % Mark the visit
     nVisits(i) = nVisits(i) + 1;
     
