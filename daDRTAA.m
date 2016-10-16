@@ -42,7 +42,7 @@ while i ~= iGoal && distTraveled < cutOff
     end
             
     if (da)
-        %Select the move as argmin f+C*Delta
+        % Select the move as argmin f+C*Delta
         deltaN = abs(hN - hN0);
         fNMove = fN + da*deltaN;
     else
@@ -53,8 +53,17 @@ while i ~= iGoal && distTraveled < cutOff
     [~,minIndex] = min(fNMove);
     iNext = iN(minIndex);
     iNextDist = gN(minIndex);
+    getH(i,h,errorRate);
     
-    [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, h, depth);
+    [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, depth);
+    
+    if(unreachable)
+        nVisitsNZ = nVisits(nVisits > 0);
+        meanScrubbing = mean(nVisitsNZ);
+        solved = false;
+        distTraveled = cutOff + min(gCost);
+        return
+    end
     
     
     for j=1:size(closed)
@@ -63,7 +72,7 @@ while i ~= iGoal && distTraveled < cutOff
        updateMagnitude = abs(h(s) - hnew);
        hUpdate = updateMagnitude > 0.0001;
        totalLearning = totalLearning + updateMagnitude;
-       h = setH(s,newH,h,errorRate);
+       h = setH(s, hnew, h, errorRate);
     end
     
     i = iNext;

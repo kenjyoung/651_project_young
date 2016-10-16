@@ -1,5 +1,7 @@
-function [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
-    %TODO: finish this maybe if needed
+function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
+    
+
+    unreachable = false;
     mapSize = size(map);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
     g = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32');
@@ -18,7 +20,7 @@ function [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, errorRate
     open_value(end+1) = getH(i,h,errorRate);
     
     expansions = 0;
-    while ((expansions < k) && ~isequal(size(open,1),0) && i ~= iGoal)
+    while ((expansions < k) && ~isequal(size(open,2),0) && i ~= iGoal)
         % Remove min f value from open list
         [~, open_index] = min(open_value);
         open_value(open_index) = [];
@@ -41,29 +43,36 @@ function [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, errorRate
         % Update neighbors and open list
         for j=1:size(iN)
            n = iN(j);
-           if ~g.iskey(n) || g(n) > g(i) + gN(j)
+           if ~isKey(g,n) || g(n) > g(i) + gN(j)
               g(n) = g(i)+gN(j);
               p(n) = i;
               d(n) = d(i)+1;
               
-              if(d(j)<k)
-                  %Remove any existing copies of n from open list
-                  existing = open==n;
-                  open(existing) = [];
-                  open_value(existing) = [];
-                  
-                  %Add n to open list with new f value
-                  open(end+1) = n;
-                  open_value(end+1) = g(n)+getH(n,h,errorRate);
-              end
+              %Remove any existing copies of n from open list
+              existing = open==n;
+              open(existing) = [];
+              open_value(existing) = [];
+
+              %Add n to open list with new f value
+              open(end+1) = n;
+              open_value(end+1) = g(n)+getH(n,h,errorRate);
            end
         end
     end
     
-    if(open.size()~=0)
+    if(isequal(size(open,2),0) && i ~= iGoal)
+        unreachable = true;
+        best = inf;
+        return
+    end
+    
+    if(~isequal(size(open,2),0))
         [best, best_index] = min(open_value);
         best_state = open(best_index);
+    else
+        best_state = iGoal;
     end
+    
     path = [best_state];
     curr = best_state;
     prev = p(curr);
