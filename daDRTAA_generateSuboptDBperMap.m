@@ -35,9 +35,6 @@ scenarioName = 'scenarios/uniMap_8_80.mat';
 %scenarioName = 'scenarios/uniMap_342_34200.mat';
 %scenarioName = 'scenarios/uniMap_342_17100.mat';
 
-fPos = [100 95 1280 720];
-fig = figure('Position',fPos);
-
 [~, sName, ~] = fileparts(scenarioName);
 
 diaryFileName = sprintf('logs/generateSuboptDBperMap_%s.txt',sName);

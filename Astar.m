@@ -1,6 +1,7 @@
-function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
+function [closed, g, best] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
     %TODO: finish this maybe if needed
     mapSize = size(map);
+    iGoal = sub2ind(mapSize,goal.y,goal.x);
     g = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32');
     p = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %parent
     d = containers.Map('KeyType', 'uint32', 'ValueType', 'uint32'); %depth
@@ -14,11 +15,10 @@ function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
     open_value = [];
     
     open(end+1) = i;
-    open_value(end+1) = h(i);
+    open_value(end+1) = getH(i,h,errorRate);
     
     expansions = 0;
-    size(open)
-    while expansions < k && size(open,1)~=0 && i ~= goal
+    while ((expansions < k) && ~isequal(size(open,1),0) && i ~= iGoal)
         % Remove min f value from open list
         [~, open_index] = min(open_value);
         open_value(open_index) = [];
@@ -35,7 +35,7 @@ function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
         availableN = ~map(iN);
         iN = iN(availableN);
         gN = gCost(availableN);
-        hN = getH(iN,h);
+        hN = getH(iN,h,errorRate);
         fN = gN + hN;
         
         % Update neighbors and open list
@@ -54,7 +54,7 @@ function [closed, g, best] = Astar(i,map,goal,neighborhoodI,gCost,h, k)
                   
                   %Add n to open list with new f value
                   open(end+1) = n;
-                  open_value(end+1) = g(n)+h(n);
+                  open_value(end+1) = g(n)+getH(n,h,errorRate);
               end
            end
         end

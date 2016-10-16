@@ -19,7 +19,6 @@ totalLearning = 0;
 
 % As long as we haven't reached the goal and haven't run out of quota
 while i ~= iGoal && distTraveled < cutOff
-
     % Mark the visit
     nVisits(i) = nVisits(i) + 1;
     
@@ -66,6 +65,8 @@ while i ~= iGoal && distTraveled < cutOff
        totalLearning = totalLearning + updateMagnitude;
        h = setH(s,newH,h,errorRate);
     end
+    
+    i = iNext;
     
     distTraveled = distTraveled + iNextDist;
 
