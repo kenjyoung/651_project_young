@@ -32,6 +32,7 @@ parfor n = 1:nProblems
     [solution, sc(n), solved(n)] =  ...
         daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,false);
     
+    display(solution / hs);
     subopt(n) = solution / hs;
 end
 

@@ -40,7 +40,7 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
         % Update neighbors and open list
         for j=1:size(iN,2)
            n = iN(j);
-           if ~isKey(g,n) || g(n) > g(i) + gN(j)
+           if ~any(n == closed) && (~isKey(g,n) || g(n) > g(i) + gN(j))
               g(n) = g(i)+gN(j);
               p(n) = i;
               d(n) = d(i)+1;
@@ -70,13 +70,13 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
         best_state = iGoal;
     end
     
-    path = [best_state];
-    curr = best_state;
-    prev = p(curr);
-    while prev ~=curr
-        path(end+1) = prev;
-        curr = prev;
-        prev = p(curr);
-    end 
-    path = fliplr(path);
+%     path = [best_state];
+%     curr = best_state;
+%     prev = p(curr);
+%     while prev ~=curr
+%         path(end+1) = prev;
+%         curr = prev;
+%         prev = p(curr);
+%     end 
+%     path = fliplr(path);
 end

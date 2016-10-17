@@ -24,6 +24,9 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
     % As long as we haven't reached the goal and haven't run out of quota
     while i ~= iGoal && distTraveled < cutOff
         % Visualize
+
+        % Mark the visit
+        nVisits(i) = nVisits(i) + 1;
         if(visualize)
             cla
             displayMap(map,h-h0,[0 0 1],false);
@@ -31,10 +34,6 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
             dispStartGoal(current,goal);
             drawnow
         end
-
-        % Mark the visit
-        nVisits(i) = nVisits(i) + 1;
-
         % Generate the neighborhood
         iN = i + neighborhoodI;
         availableN = ~map(iN);
@@ -44,7 +43,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
         hI = getH(i,h,errorRate);
         hN0 = getH(iN,h0,errorRate);
         fN = gN + hN;
-        
+
         % Check if we actually have any moves
         if (isempty(fN))
             nVisitsNZ = nVisits(nVisits > 0);
@@ -68,6 +67,10 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
         iNextDist = gN(minIndex);
         getH(i,h,errorRate);
 
+        i = iNext;
+
+        distTraveled = distTraveled + iNextDist;
+
         [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, depth);
 
         if(unreachable)
@@ -86,10 +89,6 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
            totalLearning = totalLearning + updateMagnitude;
            h = setH(s, hnew, h, errorRate);
         end
-
-        i = iNext;
-
-        distTraveled = distTraveled + iNextDist;
     end
 
     %% Compute scrubbing
