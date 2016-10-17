@@ -29,7 +29,6 @@ function [closed, g, best, unreachable] = Astar(i, map, goal, neighborhoodI, gCo
         
         closed(end+1) = i;
         
-        
         expansions = expansions + 1;
         % Generate the neighborhood
         iN = i + neighborhoodI;
