@@ -63,13 +63,11 @@ numProblemsPerMap = numProblems/numMaps;
 problemI = 1:numProblems;
 fprintf('Loaded %s\n\tmaps %d | problems %d, %0.1f per map\n',scenarioName,numMaps,numProblems,numProblemsPerMap);
 
-subopt = NaN(numProblems);
-
 da = 1;
-depth = 10;
+depth = 1;
 tt = tic;
-[subopt(:), ~, solved] = daDRTAA_eval(loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,da,depth);
+[subopt, ~, solved] = daDRTAA_eval(loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,da,depth);
 fprintf('subopt %0.1f | solved %0.1f%% | %s\n',...
-        mean(subopt(aI,:)),100*nnz(solved)/numProblems,sec2str(toc(tt)));
+        mean(subopt),100*nnz(solved)/numProblems,sec2str(toc(tt)));
 
 fprintf('')

@@ -29,11 +29,12 @@ parfor n = 1:nProblems
     iStart = sub2ind(size(map),p.start.y,p.start.x);
     
     % Run the algorithm
+    tt = tic()
     [solution, sc(n), solved(n)] =  ...
         daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,false);
-    
-    display(solution / hs);
     subopt(n) = solution / hs;
+    fprintf('subopt %0.1f | solved %d | %s\n',...
+        subopt(n),solved(n),sec2str(toc(tt)));
 end
 
 end
