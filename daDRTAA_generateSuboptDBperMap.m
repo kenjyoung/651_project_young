@@ -25,11 +25,11 @@ cutoff = 1000;
 %beamWidth = gene(7);
 %learningQuota = gene(8);
 
-%scenarioName = 'scenarios/uniMap_3_9.mat';
+scenarioName = 'scenarios/uniMap_3_9.mat';
 %scenarioName = 'scenarios/uniMap_342_1710.mat';
 %scenarioName = 'scenarios/uniMap_8_16.mat';
 %scenarioName = 'scenarios/uniMap_50_500.mat';
-scenarioName = 'scenarios/uniMap_8_80.mat';
+%scenarioName = 'scenarios/uniMap_8_80.mat';
 %scenarioName = 'scenarios/uniMap_200_10000.mat';
 %scenarioName = 'scenarios/uniMap_100_5000.mat';
 %scenarioName = 'scenarios/uniMap_100_20000.mat';
@@ -64,9 +64,9 @@ numProblemsPerMap = numProblems/numMaps;
 problemI = 1:numProblems;
 fprintf('Loaded %s\n\tmaps %d | problems %d, %0.1f per map\n',scenarioName,numMaps,numProblems,numProblemsPerMap);
 
-da = 3;
-depth = 5;
-commit = 3;
+da = 2;
+depth = 10;
+commit = 10;
 tt = tic;
 [subopt, ~, solved] = daDRTAA_eval(loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,da,depth,commit);
 fprintf('subopt %0.1f | solved %0.1f%% | %s\n',...

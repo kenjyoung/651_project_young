@@ -34,7 +34,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
             drawnow
         end
 
-        [closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, depth);
+        [best, closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, depth);
 
         if(unreachable)
             nVisitsNZ = nVisits(nVisits > 0);
@@ -75,7 +75,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
         distTraveled = distTraveled + g(i);
         for j=1:size(closed,2)
            s = closed(j);
-           hnew = max(best_value-g(s), h(s));
+           hnew = max(best-g(s), h(s));
            updateMagnitude = abs(h(s) - hnew);
            hUpdate = updateMagnitude > 0.0001;
            totalLearning = totalLearning + updateMagnitude;

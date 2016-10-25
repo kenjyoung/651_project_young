@@ -1,4 +1,4 @@
-function [closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
+function [best, closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
     
 
     unreachable = false;
@@ -61,6 +61,8 @@ function [closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, 
         unreachable = true;
         return
     end
+    
+    best = min(open_value);
     
 %      path = [best_state];
 %      curr = best_state;
