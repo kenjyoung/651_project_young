@@ -70,7 +70,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
         end 
         path = fliplr(path);
         
-        path_index = min(size(path,2), commit);
+        path_index = min(size(path,2), commit+1);
         i = path(path_index);
         distTraveled = distTraveled + g(i);
         for j=1:size(closed,2)

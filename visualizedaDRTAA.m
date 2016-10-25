@@ -13,7 +13,7 @@ errorRate = 0;
 cutoff = 1000;
 
 da = 10;
-commit = 5;
+commit = 1;
 depth = 20;
 
 scenarioName = 'scenarios/yngvi_5.mat';
