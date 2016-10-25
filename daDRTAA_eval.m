@@ -1,4 +1,4 @@
-function [subopt, sc, solved] = daDRTAA_eval(problem,maps,nProblems,cutoff,errorRate,da,depth)
+function [subopt, sc, solved] = daDRTAA_eval(problem,maps,nProblems,cutoff,errorRate,da,depth,commit)
 %% Evaluates a gene on nProblems
 % Vadim Bulitko
 % March 3, 2016
@@ -31,7 +31,7 @@ parfor n = 1:nProblems
     % Run the algorithm
     tt = tic()
     [solution, sc(n), solved(n)] =  ...
-        daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,false);
+        daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,commit,false);
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
         subopt(n),solved(n),sec2str(toc(tt)));

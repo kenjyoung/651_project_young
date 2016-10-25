@@ -12,8 +12,9 @@ format short g
 errorRate = 0;
 cutoff = 1000;
 
-da = 1;
-depth = 10;
+da = 10;
+commit = 5;
+depth = 20;
 
 scenarioName = 'scenarios/yngvi_5.mat';
 
@@ -52,7 +53,7 @@ fprintf('\nRunning problem %d\n',problemI);
 %% Run the algorithm
 tt = tic;
 
-[subopt,~,solved] = daDRTAAEvalVis(loadedScenario.problem,loadedScenario.maps,problemI,cutoff,errorRate,da,depth);
+[subopt,~,solved] = daDRTAAEvalVis(loadedScenario.problem,loadedScenario.maps,problemI,cutoff,errorRate,da,depth,commit);
 
 fprintf('\tsubopt %0.1f | solved %d | %s\n',subopt,solved,sec2str(toc(tt)));
 
