@@ -53,7 +53,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
             for j=1:size(open,2)
                s = open(j);
                delta = h(s) - h0(s);
-               value = g(s) + h(s); + da*delta;
+               value = g(s) + h(s) + da*delta;
                if value < best_value
                   best_value = value;
                   best_state = s;
