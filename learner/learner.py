@@ -104,7 +104,8 @@ class learner:
             action
             )
         self.evaluate_action = theano.function(
-            [q_in.input_var],
+            [state, action],
+            givens = {q_in.input_var: T.concatenate(state, action, axis=1)},
             evaluation
             )
 
@@ -114,19 +115,27 @@ class learner:
         Q_params = lasagne.layers.get_all_params(q_output)
         Q_updates = lasagne.updates.rmsprop(Q_loss, Q_params, alpha, rho, epsilon)
         self.update_Q = theano.function(
-            [q_in.input_var, Q_targets],
-            Q_loss,
+            [state, action, Q_targets],
+            givens = {q_in.input_var: T.concatenate(state, action, axis=1)},
             updates = Q_updates
             )
 
-        #TODO: add update function for policy network
+        state_batch = T.tensor4('state_batch')
+        V = self.evaluate_action(state_batch, self.select_action(state_batch))
+        P_params = lasagne.layers.get_all_params(p_output)
+        V_grads = T.grad(V, P_params)
+        P_updates = lasagne.updates.rmsprop(V_grads, P_params, alpha, rho, epsilon)
+        self.update_P = theano.function(
+            [p_in.input_var],
+            updates = P_updates
+            )
 
-    def select_action(self, state, explore=False):
+
+    def select_action(self, state, explore=True):
         return self.select_action(state)*(1+(np.random.normal() if explore else 0))
 
     def evaluate_action(self, state, action):
-        state_action = np.concatenate((state,action), 0)
-        return self.evaluate_action(state_action)
+        return self.evaluate_action(state, action)
 
     def update_memory(self, state1, action, reward, state2):
         self.mem.add_entry(state1, action, reward, state2)
@@ -134,5 +143,7 @@ class learner:
     def learn(self, batch_size):
         states1, actions, rewards, states2 = self.mem.sample_batch(batch_size)
         targets = rewards+self.gamma*self.evaluate_action(state2, self.select_action(state2))
+        self.update_Q(states1, actions, targets)
+        self.update_P(states1)
 
 
