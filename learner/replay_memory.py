@@ -1,8 +1,7 @@
 import numpy as np
-from inputFormat import *
 
 class replay_memory:
-    def __init__(self, capacity):
+    def __init__(self, capacity, input_shape):
         self.capacity = capacity
         self.size = 0
         self.index = 0

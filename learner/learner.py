@@ -8,7 +8,7 @@ input_shape = (3, 120, 160)
 num_params = 3
 class learner:
     def __init__(self, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
-        self.mem = replay_memory(1000)
+        self.mem = replay_memory(1000, input_shape)
         self.gamma = gamma
 
         #Build Policy Network
@@ -53,7 +53,7 @@ class learner:
             W=lasagne.init.HeNormal(gain=1.0)
         )
 
-        action = lasagne.layers.get_output(p_output, p_in.input_var)
+        policy_output = lasagne.layers.get_output(p_output, p_in.input_var)
 
         #Build Q Network
         q_in = lasagne.layers.InputLayer(
@@ -101,12 +101,15 @@ class learner:
         #Build functions
         self.select_action = theano.function(
             [p_in.input_var],
-            action
+            policy_output
             )
+
+        state = T.tensor3('state')
+        action = T.fvector('action')
         self.evaluate_action = theano.function(
             [state, action],
             givens = {q_in.input_var: T.concatenate(state, action, axis=1)},
-            evaluation
+            outputs = evaluation
             )
 
         Q_targets = T.fvector('target')
@@ -142,7 +145,7 @@ class learner:
 
     def learn(self, batch_size):
         states1, actions, rewards, states2 = self.mem.sample_batch(batch_size)
-        targets = rewards+self.gamma*self.evaluate_action(state2, self.select_action(state2))
+        targets = rewards+self.gamma*self.evaluate_action(states2, self.select_action(states2))
         self.update_Q(states1, actions, targets)
         self.update_P(states1)
 
