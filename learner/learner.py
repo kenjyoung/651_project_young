@@ -2,11 +2,13 @@ import theano
 from theano import tensor as T
 import numpy as np
 import lasagne
-import replay_memory
+from replay_memory import replay_memory
 
-input_shape = (3, 120, 160)
+input_shape = (3, 128, 128)
 num_params = 3
-class learner:
+action_len = 2
+#TODO: finish fixing actions to be correct size
+class Learner:
     def __init__(self, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
         self.mem = replay_memory(1000, input_shape)
         self.gamma = gamma
@@ -106,9 +108,10 @@ class learner:
 
         state = T.tensor3('state')
         action = T.fvector('action')
+        expanded_action = action*T.ones((action_len,input_shape[1],input_shape[2]))
         self.evaluate_action = theano.function(
             [state, action],
-            givens = {q_in.input_var: T.concatenate(state, action, axis=1)},
+            givens = {q_in.input_var: T.concatenate((state, expanded_action), axis=1)},
             outputs = evaluation
             )
 
@@ -119,7 +122,7 @@ class learner:
         Q_updates = lasagne.updates.rmsprop(Q_loss, Q_params, alpha, rho, epsilon)
         self.update_Q = theano.function(
             [state, action, Q_targets],
-            givens = {q_in.input_var: T.concatenate(state, action, axis=1)},
+            givens = {q_in.input_var: T.concatenate((state, action), axis=1)},
             updates = Q_updates
             )
 
