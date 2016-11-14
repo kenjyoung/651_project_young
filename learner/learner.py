@@ -4,12 +4,12 @@ import numpy as np
 import lasagne
 from replay_memory import replay_memory
 
-input_shape = (3, 128, 128)
+input_shape = (6, 128, 128)
 num_params = 3
 #TODO: finish fixing actions to be correct size
 class Learner:
     def __init__(self, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
-        self.mem = replay_memory(1000, input_shape)
+        self.mem = replay_memory(1000, input_shape, num_params)
         self.gamma = gamma
 
         #Create Input Variables
@@ -17,7 +17,7 @@ class Learner:
         action = T.fvector('action')
         state_batch = T.tensor4('state_batch')
         action_batch = T.matrix('action_batch')
-        expanded_action = action_batch*T.ones((action_batch.shape[0], action_batch.shape[1], input_shape[1], input_shape[2]))
+        expanded_action = T.transpose(T.tile(T.transpose(action_batch), (128,128,1,1)))
         state_action = T.concatenate((state_batch, expanded_action), axis=1)
         Q_targets = T.fvector('Q_target')
 
@@ -123,6 +123,16 @@ class Learner:
             outputs = evaluation.flatten()
         )
 
+        self._select_actions = theano.function(
+            [state_batch],
+            outputs = policy_output
+        )
+
+        self._evaluate_actions = theano.function(
+            [state_batch, action_batch],
+            outputs = evaluation.flatten()
+        )
+
         Q_loss = lasagne.objectives.squared_error(evaluation, Q_targets)
         Q_loss = lasagne.objectives.aggregate(Q_loss, mode='mean')
         Q_params = lasagne.layers.get_all_params(q_output)
@@ -150,19 +160,15 @@ class Learner:
 
     def evaluate_action(self, state, action):
         state = state.astype(theano.config.floatX)
-        action =action.astype(theano.config.floatX)
+        action = action.astype(theano.config.floatX)
         return self._evaluate_action(state, action)
 
     def update_memory(self, state1, action, reward, state2):
-        state1 = state1.astype(theano.config.floatX)
-        action = action.astype(theano.config.floatX)
-        reward = reward.astype(theano.config.floatX)
-        state2 = state2.astype(theano.config.floatX)
         self.mem.add_entry(state1, action, reward, state2)
 
     def learn(self, batch_size):
         states1, actions, rewards, states2 = self.mem.sample_batch(batch_size)
-        targets = rewards+self.gamma*self._evaluate_action(states2, self.select_action(states2))
+        targets = rewards+self.gamma*self._evaluate_actions(states2, self._select_actions(states2))
         self._update_Q(states1, actions, targets)
         self._update_P(states1)
 

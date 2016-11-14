@@ -1,20 +1,21 @@
 import numpy as np
+import theano
 
 class replay_memory:
-    def __init__(self, capacity, input_shape):
+    def __init__(self, capacity, input_shape, num_params):
         self.capacity = capacity
         self.size = 0
         self.index = 0
         self.full = False
-        self.state1_memory = np.zeros(np.concatenate(([capacity], input_shape)), dtype=bool)
-        self.action_memory = np.zeros(capacity, dtype=np.uint8)
-        self.reward_memory = np.zeros(capacity, dtype=bool)
-        self.state2_memory = np.zeros(np.concatenate(([capacity], input_shape)), dtype=bool)
+        self.state1_memory = np.zeros(np.concatenate(([capacity], input_shape)), dtype=theano.config.floatX)
+        self.action_memory = np.zeros(np.concatenate(([capacity], [num_params])), dtype=theano.config.floatX)
+        self.reward_memory = np.zeros(capacity, dtype=theano.config.floatX)
+        self.state2_memory = np.zeros(np.concatenate(([capacity], input_shape)), dtype=theano.config.floatX)
 
     def add_entry(self, state1, action, reward, state2):
         self.state1_memory[self.index, :, :] = state1
         self.state2_memory[self.index, :, :] = state2
-        self.action_memory[self.index] = action
+        self.action_memory[self.index, :] = action
         self.reward_memory[self.index] = reward
         self.index += 1
         if(self.index>=self.capacity):
