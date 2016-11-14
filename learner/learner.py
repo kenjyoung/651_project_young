@@ -135,8 +135,7 @@ class Learner:
 
         Q_grad = T.jacobian(evaluation.flatten(), action_batch)
         P_params = lasagne.layers.get_all_params(p_output)
-        P_grad = T.jacobian(policy_output.flatten(), P_params)
-        V_grads = T.dot(Q_grad, P_grad)
+        V_grads = T.Lop(policy_output.flatten(), P_params, Q_grad)
         P_updates = lasagne.updates.rmsprop(V_grads, P_params, alpha, rho, epsilon)
         self._update_P = theano.function(
             [state_batch],
