@@ -114,13 +114,13 @@ class Learner:
         self._select_action = theano.function(
             [state],
             givens = {state_batch : state.dimshuffle('x',0,1,2)},
-            outputs = policy_output
+            outputs = policy_output.flatten()
         )
 
         self._evaluate_action = theano.function(
             [state, action],
             givens = {state_batch : state.dimshuffle('x',0,1,2), action_batch : action.dimshuffle('x',0)},
-            outputs = evaluation
+            outputs = evaluation.flatten()
         )
 
         Q_loss = lasagne.objectives.squared_error(evaluation, Q_targets)
@@ -145,12 +145,19 @@ class Learner:
 
 
     def select_action(self, state, explore=True):
+        state = state.astype(theano.config.floatX)
         return self._select_action(state)*([1+(np.random.normal() if explore else 0) for i in range(num_params)])
 
     def evaluate_action(self, state, action):
+        state = state.astype(theano.config.floatX)
+        action =action.astype(theano.config.floatX)
         return self._evaluate_action(state, action)
 
     def update_memory(self, state1, action, reward, state2):
+        state1 = state1.astype(theano.config.floatX)
+        action = action.astype(theano.config.floatX)
+        reward = reward.astype(theano.config.floatX)
+        state2 = state2.astype(theano.config.floatX)
         self.mem.add_entry(state1, action, reward, state2)
 
     def learn(self, batch_size):
