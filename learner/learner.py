@@ -171,12 +171,12 @@ class Learner:
 
     def select_action(self, state, explore=True):
         state = state.astype(theano.config.floatX)
-        return self._select_action(state)*([1+(np.random.normal() if explore else 0) for i in range(num_params)])
+        return list(self._select_action(state)*([1+(np.random.normal() if explore else 0) for i in range(num_params)]))
 
     def evaluate_action(self, state, action):
         state = state.astype(theano.config.floatX)
         action = action.astype(theano.config.floatX)
-        return self._evaluate_action(state, action)
+        return list(self._evaluate_action(state, action))
 
     def update_memory(self, state1, action, reward, state2):
         self.mem.add_entry(state1, action, reward, state2)
