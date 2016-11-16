@@ -3,15 +3,16 @@ import numpy as np
 
 learn = Learner()
 
-for i in range(10):
+for i in range(128):
     state = np.random.rand(7, 128, 128)
     action = learn.select_action(state)
     value = learn.evaluate_action(state, action)
     state_new = np.random.rand(7, 128, 128)
     reward = -1
     learn.update_memory(state, action, reward, state_new)
+    print("update "+str(i)+" of 128")
     assert(learn.mem.size==i+1)
-    learn.learn(1)
+    learn.learn(8)
 
 state = np.random.rand(7, 128, 128)
 action = learn.select_action(state, False)

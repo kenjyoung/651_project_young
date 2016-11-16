@@ -24,11 +24,13 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     nVisits = zeros(mapSize);
     totalLearning = 0;
 
+    [startx, starty] = ind2sub(mapSize, i);
+    start = struct('x', startx, 'y', starty);
+    new_state = build_state(map, start, goal, h, h0);
     % As long as we haven't reached the goal and haven't run out of quota
     while i ~= iGoal && distTraveled < cutOff
-        [startx, starty] = ind2sub(mapSize, i);
-        start = struct('x', startx, 'y', starty);
-        state = build_state(map, start, goal, h, h0);
+        tic;
+        state = new_state;
         action = cell2mat(cell(select_action(learner, state)));
         
         da = ceil(action(1)*da_max);
@@ -100,6 +102,14 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
            totalLearning = totalLearning + updateMagnitude;
            h = setH(s, hnew, h, errorRate);
         end
+        reward = -toc;
+        [startx, starty] = ind2sub(mapSize, i);
+        start = struct('x', startx, 'y', starty);
+        new_state = build_state(map, start, goal, h, h0);
+        
+        %update replay memory and preform a learning step
+        update_memory(learner, state, action, reward, new_state);
+        learn(learner, 32);
     end
 
     %% Compute scrubbing

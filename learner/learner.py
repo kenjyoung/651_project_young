@@ -146,21 +146,23 @@ class Learner:
             outputs = evaluation.flatten()
         )
 
-        Q_loss = lasagne.objectives.squared_error(evaluation, Q_targets)
-        Q_loss = lasagne.objectives.aggregate(Q_loss, mode='mean')
+        Q_loss = lasagne.objectives.squared_error(evaluation.flatten(), Q_targets)
+        agg_Q_loss = lasagne.objectives.aggregate(Q_loss, mode='mean')
         Q_params = lasagne.layers.get_all_params(self.q_output)
-        Q_updates = lasagne.updates.rmsprop(Q_loss, Q_params, alpha, rho, epsilon)
+        Q_updates = lasagne.updates.rmsprop(agg_Q_loss, Q_params, alpha, rho, epsilon)
         self._update_Q = theano.function(
             [state_batch, action_batch, Q_targets],
             updates = Q_updates
         )
 
 
-        Q_grad = T.jacobian(evaluation.flatten(), action_batch)
         P_params = lasagne.layers.get_all_params(self.p_output)
-        V_grads = T.Lop(policy_output.flatten(), P_params, Q_grad)
+
+        agg_evaluation = lasagne.objectives.aggregate(evaluation.flatten(), mode='mean')
+        Q_grads = T.grad(agg_evaluation, action_batch)
+        V_grads = T.Lop(policy_output, P_params, Q_grads)
+        neg_V_grads=[-x for x in V_grads]
         #negate gradients so that rmsprop preforms gradient ascent on action values
-        neg_V_grads = [-x for x in V_grads]
         P_updates = lasagne.updates.rmsprop(neg_V_grads, P_params, alpha, rho, epsilon)
         self._update_P = theano.function(
             [state_batch],
@@ -179,6 +181,9 @@ class Learner:
         return list(self._evaluate_action(state, action))
 
     def update_memory(self, state1, action, reward, state2):
+        state1 = np.asarray(state1, dtype = theano.config.floatX).reshape(input_shape)
+        state2 = np.asarray(state2, dtype = theano.config.floatX).reshape(input_shape)
+        action = np.asarray(action, dtype = theano.config.floatX)
         self.mem.add_entry(state1, action, reward, state2)
 
     def learn(self, batch_size):
@@ -187,6 +192,7 @@ class Learner:
             return
         states1, actions, rewards, states2 = self.mem.sample_batch(batch_size)
         targets = rewards+self.gamma*self._evaluate_actions(states2, self._select_actions(states2))
+        print(str(states1.shape)+str(states2.shape)+str(targets.shape)+str(rewards.shape))
         self._update_Q(states1, actions, targets)
         self._update_P(states1)
 
