@@ -10,7 +10,7 @@ solved = false(1,nProblems);
 
 
 %% Go through the problems
-parfor n = 1:nProblems
+for n = 1:nProblems
     % Prepare the problem
     p = problem(n);
     map = maps{p.mapInd};
@@ -29,7 +29,7 @@ parfor n = 1:nProblems
     iStart = sub2ind(size(map),p.start.y,p.start.x);
     
     % Run the algorithm
-    tt = tic()
+    tt = tic();
     [solution, sc(n), solved(n)] =  ...
         learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
     subopt(n) = solution / hs;
