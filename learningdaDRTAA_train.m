@@ -1,4 +1,4 @@
-function [subopt, sc, solved] = daDRTAA_eval(learner, problem,maps,nProblems,cutoff,errorRate)
+function [subopt, sc, solved] = learningdaDRTAA_train(learner, problem,maps,nProblems,cutoff,errorRate)
 %% Evaluates a gene on nProblems
 % Vadim Bulitko
 % March 3, 2016
@@ -13,7 +13,7 @@ solved = false(1,nProblems);
 parfor n = 1:nProblems
     % Prepare the problem
     p = problem(n);
-    map = maps{p.mapInd}; %#ok<PFBNS>
+    map = maps{p.mapInd};
     goal = p.goal;
     mapHeight = size(map,1);
     s2 = sqrt(2);
@@ -31,7 +31,7 @@ parfor n = 1:nProblems
     % Run the algorithm
     tt = tic()
     [solution, sc(n), solved(n)] =  ...
-        traineddaDRTAA(learner, iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
+        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
         subopt(n),solved(n),sec2str(toc(tt)));
