@@ -180,19 +180,21 @@ class Learner:
         action = np.asarray(action, dtype = theano.config.floatX)
         return list(self._evaluate_action(state, action))
 
-    def update_memory(self, state1, action, reward, state2):
+    def update_memory(self, state1, action, reward, state2, terminal):
         state1 = np.asarray(state1, dtype = theano.config.floatX).reshape(input_shape)
         state2 = np.asarray(state2, dtype = theano.config.floatX).reshape(input_shape)
         action = np.asarray(action, dtype = theano.config.floatX)
-        self.mem.add_entry(state1, action, reward, state2)
+        self.mem.add_entry(state1, action, reward, state2, terminal)
 
     def learn(self, batch_size):
         #do nothing if we don't yet have enough entries in memory for a full batch
         if(self.mem.size < batch_size):
             return
-        states1, actions, rewards, states2 = self.mem.sample_batch(batch_size)
-        targets = rewards+self.gamma*self._evaluate_actions(states2, self._select_actions(states2))
-        print(str(states1.shape)+str(states2.shape)+str(targets.shape)+str(rewards.shape))
+        states1, actions, rewards, states2, terminals = self.mem.sample_batch(batch_size)
+        targets = np.zeros(rewards.size).astype(theano.config.floatX)
+        targets[terminals==0] = rewards[terminals==0]+self.gamma*self._evaluate_actions(states2, self._select_actions(states2))[terminals==0]
+        targets[terminals==1] = rewards[terminals==1]
+
         self._update_Q(states1, actions, targets)
         self._update_P(states1)
 

@@ -11,12 +11,14 @@ class replay_memory:
         self.action_memory = np.zeros(np.concatenate(([capacity], [num_params])), dtype=theano.config.floatX)
         self.reward_memory = np.zeros(capacity, dtype=theano.config.floatX)
         self.state2_memory = np.zeros(np.concatenate(([capacity], input_shape)), dtype=theano.config.floatX)
+        self.terminal_memory = np.zeros(capacity, dtype=bool)
 
-    def add_entry(self, state1, action, reward, state2):
+    def add_entry(self, state1, action, reward, state2, terminal):
         self.state1_memory[self.index, :, :] = state1
         self.state2_memory[self.index, :, :] = state2
         self.action_memory[self.index, :] = action
         self.reward_memory[self.index] = reward
+        self.terminal_memory[self.index] = terminal
         self.index += 1
         if(self.index>=self.capacity):
             self.full = True
@@ -30,4 +32,5 @@ class replay_memory:
         states2 = self.state2_memory[batch]
         actions = self.action_memory[batch]
         rewards = self.reward_memory[batch]
-        return (states1, actions, rewards, states2)
+        terminals = self.terminal_memory[batch]
+        return (states1, actions, rewards, states2, terminals)

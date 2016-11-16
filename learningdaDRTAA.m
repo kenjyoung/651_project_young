@@ -103,12 +103,17 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
            h = setH(s, hnew, h, errorRate);
         end
         reward = -toc;
+        if(i ~= iGoal)
+            terminal = 0;
+        else
+            terminal = 1;
+        end
         [startx, starty] = ind2sub(mapSize, i);
         start = struct('x', startx, 'y', starty);
         new_state = build_state(map, start, goal, h, h0);
         
         %update replay memory and preform a learning step
-        update_memory(learner, state, action, reward, new_state);
+        update_memory(learner, state, action, reward, new_state, terminal);
         learn(learner, 32);
     end
 
