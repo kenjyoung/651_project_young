@@ -13,6 +13,8 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
     % Set initial parameters
     mapSize = size(map);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
+    da_max = 10;
+    depth_max = 10;
     %iPrevious = ones(1,0); % = []
     %coder.varsize('iPrevious',[1, Inf], [0, 1]);
     %iPreviousCost = ones(1,0);   % = []                   
@@ -29,13 +31,13 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
         state = build_state(map, start, goal, h, h0);
         action = cell2mat(cell(select_action(learner, state)));
         
-        da = ceil(action(1));
-        if(da < 1)
-           da=1; 
+        da = ceil(action(1)*da_max);
+        depth = ceil(action(2)*depth_max);
+        if(da<1)
+            da = 1;
         end
-        depth = ceil(action(2));
-        if(depth < 1)
-            depth=1;
+        if(depth<1)
+           depth = 1; 
         end
         commit = depth; %could be tuned too but lets keep it simple for now
         

@@ -66,7 +66,7 @@ class Learner:
             p_hidden,
             num_units=num_params,
             #purely linear layer
-            nonlinearity= lasagne.nonlinearities.rectify,
+            nonlinearity= lasagne.nonlinearities.sigmoid,
             W=lasagne.init.HeNormal(gain=1.0)
         )
 
