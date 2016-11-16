@@ -3,10 +3,6 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
     %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
     % Vadim Bulitko
     % February 25, 2016
-    
-    %%TODO: idea: commit to several steps at a time, maybe there isn't much
-    %%point totally rerunning A* from scratch if we only take one step
-    %%first
 
     %% Preliminaries
     % Set initial parameters

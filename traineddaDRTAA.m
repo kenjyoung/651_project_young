@@ -1,12 +1,13 @@
-function [distTraveled, meanScrubbing, solved] = daDRTAA(learner,i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff,visualize)
+function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,goal,neighborhoodI,gCost,h,errorRate,cutOff,visualize)
     %% Returns the expected distance traveled to a goal state
-    %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
     % Vadim Bulitko
     % February 25, 2016
     
-    %%TODO: idea: commit to several steps at a time, maybe there isn't much
-    %%point totally rerunning A* from scratch if we only take one step
-    %%first
+%     if count(py.sys.path,'learner') == 0
+%         insert(py.sys.path,int32(0),'learner');
+%     end
+% 
+%     import py.learner.Learner;
 
     %% Preliminaries
     % Set initial parameters
@@ -23,8 +24,22 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(learner,i,map,goal,neig
 
     % As long as we haven't reached the goal and haven't run out of quota
     while i ~= iGoal && distTraveled < cutOff
-        state = build_state(map, goal, h, h0)
-        action = select_action(learner, state)
+        [startx, starty] = ind2sub(mapSize, i);
+        start = struct('x', startx, 'y', starty);
+        state = build_state(map, start, goal, h, h0);
+        action = cell2mat(cell(select_action(learner, state)));
+        
+        da = ceil(action(1));
+        if(da < 1)
+           da=1; 
+        end
+        depth = ceil(action(2));
+        if(depth < 1)
+            depth=1;
+        end
+        commit = depth; %could be tuned too but lets keep it simple for now
+        
+        
         % Visualize
         % Mark the visit
         nVisits(i) = nVisits(i) + 1;

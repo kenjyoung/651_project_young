@@ -5,8 +5,8 @@ import lasagne
 from replay_memory import replay_memory
 import cPickle
 
-input_shape = (6, 128, 128)
-num_params = 3
+input_shape = (7, 128, 128)
+num_params = 2
 class Learner:
     def __init__(self, loadfile = None, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
         self.mem = replay_memory(1000, input_shape, num_params)
@@ -170,12 +170,12 @@ class Learner:
 
 
     def select_action(self, state, explore=True):
-        state = state.astype(theano.config.floatX)
-        return list(self._select_action(state)*([1+(np.random.normal() if explore else 0) for i in range(num_params)]))
+        state = np.asarray(state, dtype=theano.config.floatX).reshape(input_shape)
+        return list(self._select_action(state)*([1+(np.random.normal(scale=0.5) if explore else 0) for i in range(num_params)]))
 
     def evaluate_action(self, state, action):
-        state = state.astype(theano.config.floatX)
-        action = action.astype(theano.config.floatX)
+        state = np.asarray(state, dtype = theano.config.floatX).reshape(input_shape)
+        action = np.asarray(action, dtype = theano.config.floatX)
         return list(self._evaluate_action(state, action))
 
     def update_memory(self, state1, action, reward, state2):
@@ -190,7 +190,7 @@ class Learner:
         self._update_Q(states1, actions, targets)
         self._update_P(states1)
 
-    def save(self, savefile = 'learner.dat'):
+    def save(self, savefile = 'learner.save'):
         p_params = lasagne.layers.get_all_param_values(self.p_output)
         q_params = lasagne.layers.get_all_param_values(self.q_output)
         params = {'q':q_params, 'p':p_params}
