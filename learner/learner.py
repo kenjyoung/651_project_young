@@ -6,7 +6,7 @@ from replay_memory import replay_memory
 import cPickle
 
 input_shape = (7, 128, 128)
-num_params = 2
+num_params = 3
 class Learner:
     def __init__(self, loadfile = None, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
         self.mem = replay_memory(1000, input_shape, num_params)
@@ -173,7 +173,7 @@ class Learner:
 
     def select_action(self, state, explore=True):
         state = np.asarray(state, dtype=theano.config.floatX).reshape(input_shape)
-        return list(self._select_action(state)*([1+(np.random.normal(scale=0.5) if explore else 0) for i in range(num_params)]))
+        return list(np.clip(self._select_action(state)*([1+(np.random.normal(scale=0.5) if explore else 0) for i in range(num_params)]), 0, 1))
 
     def evaluate_action(self, state, action):
         state = np.asarray(state, dtype = theano.config.floatX).reshape(input_shape)

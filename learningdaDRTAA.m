@@ -14,7 +14,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     mapSize = size(map);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
     da_max = 10;
-    depth_max = 10;
+    depth_max = 50;
     %iPrevious = ones(1,0); % = []
     %coder.varsize('iPrevious',[1, Inf], [0, 1]);
     %iPreviousCost = ones(1,0);   % = []                   
@@ -33,7 +33,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         state = new_state;
         action = cell2mat(cell(select_action(learner, state)));
         
-        da = ceil(action(1)*da_max);
+        da = action(1)*da_max;
         depth = ceil(action(2)*depth_max);
         if(da<1)
             da = 1;
@@ -41,7 +41,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         if(depth<1)
            depth = 1; 
         end
-        commit = depth; %could be tuned too but lets keep it simple for now
+        commit = action(3)*depth; %keep commit strictly less than depth
         
         
         % Visualize
@@ -114,7 +114,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         
         %update replay memory and preform a learning step
         update_memory(learner, state, action, reward, new_state, terminal);
-        learn(learner, 32);
+        learn(learner, 8);
     end
         %save the trained network
         save(learner);

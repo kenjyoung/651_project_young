@@ -28,7 +28,7 @@ function [] = Train_Neural_Network(load_existing, name)
     %beamWidth = gene(7);
     %learningQuota = gene(8);
 
-    scenarioName = 'scenarios/uniMap_3_9.mat';
+    %scenarioName = 'scenarios/uniMap_3_9.mat';
     %scenarioName = 'scenarios/uniMap_342_1710.mat';
     %scenarioName = 'scenarios/uniMap_8_16.mat';
     %scenarioName = 'scenarios/uniMap_50_500.mat';

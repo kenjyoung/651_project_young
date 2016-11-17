@@ -31,7 +31,7 @@ for n = 1:nProblems
     % Run the algorithm
     tt = tic();
     [solution, sc(n), solved(n)] =  ...
-        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,true);
+        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
         subopt(n),solved(n),sec2str(toc(tt)));

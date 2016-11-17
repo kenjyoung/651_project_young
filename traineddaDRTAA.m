@@ -31,15 +31,15 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
         state = build_state(map, start, goal, h, h0);
         action = cell2mat(cell(select_action(learner, state)));
         
-        da = ceil(action(1)*da_max);
+        da = action(1)*da_max;
         depth = ceil(action(2)*depth_max);
-        if(da<1)
-            da = 1;
+        if(da<0)
+            da = 0;
         end
         if(depth<1)
            depth = 1; 
         end
-        commit = depth; %could be tuned too but lets keep it simple for now
+        commit = action(3)*depth; %keep commit strictly less than depth
         
         
         % Visualize
