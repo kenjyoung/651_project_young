@@ -116,6 +116,9 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         update_memory(learner, state, action, reward, new_state, terminal);
         learn(learner, 32);
     end
+        %save the trained network
+        save(learner);
+    
 
     %% Compute scrubbing
     nVisitsNZ = nVisits(nVisits > 0);
