@@ -39,7 +39,7 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
         if(depth<1)
            depth = 1; 
         end
-        commit = action(3)*depth; %keep commit strictly less than depth
+        commit = ceil(action(3)*depth); %keep commit strictly less than depth
         
         
         % Visualize

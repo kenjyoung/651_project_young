@@ -15,6 +15,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     iGoal = sub2ind(mapSize,goal.y,goal.x);
     da_max = 10;
     depth_max = 50;
+    speed = 10; %distance units per second, balances suboptimality with GAT
     %iPrevious = ones(1,0); % = []
     %coder.varsize('iPrevious',[1, Inf], [0, 1]);
     %iPreviousCost = ones(1,0);   % = []                   
@@ -41,7 +42,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         if(depth<1)
            depth = 1; 
         end
-        commit = action(3)*depth; %keep commit strictly less than depth
+        commit = ceil(action(3)*depth); %keep commit strictly less than depth
         
         
         % Visualize
@@ -102,7 +103,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
            totalLearning = totalLearning + updateMagnitude;
            h = setH(s, hnew, h, errorRate);
         end
-        reward = -toc;
+        reward = -(toc+g(i)/speed);
         if(i ~= iGoal)
             terminal = 0;
         else
@@ -116,9 +117,6 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         update_memory(learner, state, action, reward, new_state, terminal);
         learn(learner, 8);
     end
-        %save the trained network
-        save(learner);
-    
 
     %% Compute scrubbing
     nVisitsNZ = nVisits(nVisits > 0);
