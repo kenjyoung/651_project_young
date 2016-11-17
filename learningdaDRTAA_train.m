@@ -1,4 +1,4 @@
-function [subopt, sc, solved] = learningdaDRTAA_train(learner, problem,maps,nProblems,cutoff,errorRate)
+function [subopt, sc, solved] = learningdaDRTAA_train(learner, problem,maps,nProblems,cutoff,errorRate, problem_number)
 %% Evaluates a gene on nProblems
 % Vadim Bulitko
 % March 3, 2016
@@ -10,7 +10,7 @@ solved = false(1,nProblems);
 
 
 %% Go through the problems
-for n = 1:nProblems
+for n = problem_number:nProblems
     % Prepare the problem
     p = problem(n);
     map = maps{p.mapInd};
@@ -34,6 +34,8 @@ for n = 1:nProblems
         learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,true);
     %save the trained network after each episode
     save(learner);
+    problem_number = n;
+    save('problem_number.save', problem_number)
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
         subopt(n),solved(n),sec2str(toc(tt)));

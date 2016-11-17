@@ -1,4 +1,4 @@
-function [] = Train_Neural_Network(load_existing, name)
+function [] = Train_Neural_Network(load_existing, name, cont)
     %% Trained learner
     if count(py.sys.path,'learner') == 0
          insert(py.sys.path,int32(0),'learner');
@@ -9,6 +9,12 @@ function [] = Train_Neural_Network(load_existing, name)
        learn = py.learner.Learner(name);
     else
        learn = py.learner.Learner(); 
+    end
+    ma
+    if(cont)
+       load('problem_number.save', problem_number);
+    else
+       problem_number = 1;
     end
 
     %% Control parameters
@@ -31,8 +37,8 @@ function [] = Train_Neural_Network(load_existing, name)
     %scenarioName = 'scenarios/uniMap_3_9.mat';
     %scenarioName = 'scenarios/uniMap_342_1710.mat';
     %scenarioName = 'scenarios/uniMap_8_16.mat';
-    %scenarioName = 'scenarios/uniMap_50_500.mat';
-    scenarioName = 'scenarios/uniMap_8_80.mat';
+    scenarioName = 'scenarios/uniMap_50_500.mat';
+    %scenarioName = 'scenarios/uniMap_8_80.mat';
     %scenarioName = 'scenarios/uniMap_200_10000.mat';
     %scenarioName = 'scenarios/uniMap_100_5000.mat';
     %scenarioName = 'scenarios/uniMap_100_20000.mat';
@@ -68,7 +74,7 @@ function [] = Train_Neural_Network(load_existing, name)
     fprintf('Loaded %s\n\tmaps %d | problems %d, %0.1f per map\n',scenarioName,numMaps,numProblems,numProblemsPerMap);
 
     tt = tic;
-    [subopt, ~, solved] = learningdaDRTAA_train(learn,loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate);
+    [subopt, ~, solved] = learningdaDRTAA_train(learn,loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,problem_number);
     fprintf('subopt %0.1f | solved %0.1f%% | %s\n',...
             mean(subopt),100*nnz(solved)/numProblems,sec2str(toc(tt)));
 
