@@ -9,7 +9,7 @@ input_shape = (7, 128, 128)
 num_params = 3
 class Learner:
     def __init__(self, loadfile = None, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
-        self.mem = replay_memory(10000, input_shape, num_params)
+        self.mem = replay_memory(1000, input_shape, num_params)
         self.gamma = gamma
 
         #Create Input Variables

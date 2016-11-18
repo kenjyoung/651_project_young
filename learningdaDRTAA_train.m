@@ -34,7 +34,7 @@ for n = problem_number:nProblems
         learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
     %save the trained network after each episode
     save(learner);
-    problem_number = n;
+    problem_number = n+1;
     save('problem_number', 'problem_number');
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
