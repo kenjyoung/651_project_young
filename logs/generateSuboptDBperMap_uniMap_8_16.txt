@@ -1,0 +1,19 @@
+generateSuboptDBperMap.m |    18-Oct-2016 12:10:16
+
+Scenario uniMap_8_16
+error STD 0.0
+cutoff 1.0K
+
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('load')" style="font-weight:bold">load</a>
+Unable to read file
+'scenarios/uniMap_8_16.mat'.
+No such file or
+directory.
+
+Error in
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA_generateSuboptDBperMap', '/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA_generateSuboptDBperMap.m', 59)" style="font-weight:bold">daDRTAA_generateSuboptDBperMap</a>
+(<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA_generateSuboptDBperMap.m',59,0)">line 59</a>)
+loadedScenario =
+load(scenarioName);
+} 
+daDRTAA_generateSuboptDBperMap

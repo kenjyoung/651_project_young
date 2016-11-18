@@ -1,0 +1,13 @@
+visualizeULRTA.m |    26-Oct-2016 10:55:26
+
+Scenario yngvi_5
+error STD 0.0
+cutoff 1.0K
+
+Loaded scenarios/yngvi_5.mat
+	maps 1 | problems 5, 5.0 per map
+
+Running problem 5
+	subopt 2.5 | solved 1 | 7.04 s
+
+Total time 7.05 s

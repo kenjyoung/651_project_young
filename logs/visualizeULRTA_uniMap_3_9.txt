@@ -1,0 +1,40 @@
+visualizeULRTA.m |    26-Oct-2016 09:53:54
+
+Scenario uniMap_3_9
+error STD 0.0
+cutoff 1.0K
+
+Loaded scenarios/uniMap_3_9.mat
+	maps 3 | problems 9, 3.0 per map
+
+Running problem 1
+<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m',66,1)">66  </a>        while prev ~=curr
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m',66,1)">66  </a>        while prev ~=curr
+iGoal
+
+iGoal =
+
+       46379
+
+path
+
+path =
+
+       46118
+
+if system_dependent('IsDebugMode')==1, dbcont; end
+<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m',66,1)">66  </a>        while prev ~=curr
+path
+
+path =
+
+       45696
+
+path
+
+path =
+
+       45696
+
+exit

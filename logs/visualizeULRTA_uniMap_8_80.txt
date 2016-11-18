@@ -1,0 +1,22 @@
+visualizeULRTA.m |    17-Oct-2016 10:57:25
+
+Scenario uniMap_8_80
+error STD 0.0
+cutoff 1.0K
+
+Loaded scenarios/uniMap_8_80
+	maps 8 | problems 80, 10.0 per map
+
+Running problem 12
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA', '/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m', 32)" style="font-weight:bold">daDRTAA</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m',32,0)">line
+32</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAAEvalVis', '/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAAEvalVis.m', 24)" style="font-weight:bold">daDRTAAEvalVis</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAAEvalVis.m',24,0)">line 24</a>)
+    [solution, sc, solved] =
+    daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,true);
+    
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('visualizedaDRTAA', '/Users/kenny_789/CMPUT651/cmput651testbedF16/visualizedaDRTAA.m', 55)" style="font-weight:bold">visualizedaDRTAA</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/visualizedaDRTAA.m',55,0)">line 55</a>)
+[subopt,~,solved] =
+daDRTAAEvalVis(loadedScenario.problem,loadedScenario.maps,problemI,cutoff,errorRate,da,depth);} 
+visualizedaDRTAA

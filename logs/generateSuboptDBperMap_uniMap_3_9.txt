@@ -1,0 +1,115 @@
+generateSuboptDBperMap.m |    17-Nov-2016 11:47:54
+
+Scenario uniMap_3_9
+error STD 0.0
+cutoff 1.0K
+
+Loaded scenarios/uniMap_3_9.mat
+	maps 3 | problems 9, 3.0 per map
+
+------------------------------------------------------------------------
+       Segmentation violation detected at Thu Nov 17 11:47:54 2016
+------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding      : Disabled - No sandbox or build area path
+  Crash Mode          : continue (default)
+  Current Graphics Driver: Unknown hardware 
+  Current Visual      : Quartz
+  Default Encoding    : ISO-8859-1
+  Deployed            : false
+  Host Name           : MacBook-Pro-4.local
+  MATLAB Architecture : maci64
+  MATLAB Entitlement ID: 1981661
+  MATLAB Root         : /Applications/MATLAB_R2016b.app
+  MATLAB Version      : 9.1.0.441655 (R2016b)
+  OpenGL              : hardware
+  Operating System    : Darwin 15.6.0 Darwin Kernel Version 15.6.0: Thu Sep  1 15:01:16 PDT 2016; root:xnu-3248.60.11~2/RELEASE_X86_64 x86_64
+  Processor ID        : x86 Family 6 Model 70 Stepping 1, GenuineIntel
+  Virtual Machine     : Java 1.7.0_75-b13 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  Window System       : Quartz
+
+Fault Count: 1
+
+
+Abnormal termination:
+Segmentation violation
+
+Register State (from fault):
+  RAX = 0000700000c27f70  RBX = 000000017f8b9c61
+  RCX = 0000000100000000  RDX = 0000000100000000
+  RSP = 0000700000c27fa0  RBP = 0000003000000020
+  RSI = 0000000196aa7320  RDI = 0000000000000000
+
+   R8 = 0000700000c27eb0   R9 = 000000017f8b2d76
+  R10 = 000000017f982750  R11 = 00000001a2797e70
+  R12 = 0000700000c27fc0  R13 = 000000018a8615d8
+  R14 = 000000018a861580  R15 = 0000000000000000
+
+  RIP = 00000001a1ae72f0  RFL = 000000017f9a5160
+
+   CS = 0000700000c27ff0   FS = 000000017f8b2b85   GS = 00007fc3f5c364e0
+
+Stack Trace (from fault):
+[  0] 0x0000000110aeed04 /Applications/MATLAB_R2016b.app/bin/maci64/libmwfl.dylib+00036100 _ZN2fl4diag15stacktrace_base7captureERKNS0_14thread_contextEm+00000052
+[  1] 0x0000000110af1f9a /Applications/MATLAB_R2016b.app/bin/maci64/libmwfl.dylib+00049050 _ZN2fl4test17terminate_handledEv+00000810
+[  2] 0x0000000110af1a09 /Applications/MATLAB_R2016b.app/bin/maci64/libmwfl.dylib+00047625 _ZN2fl4diag13terminate_logEPKcPK17__darwin_ucontext+00000185
+[  3] 0x0000000114421ba8 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00420776 _Z32mnRunPathDependentInitializationN6mlutil10contextmgr5McrIDE+00003016
+[  4] 0x00000001144214e0 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00419040 _Z32mnRunPathDependentInitializationN6mlutil10contextmgr5McrIDE+00001280
+[  5] 0x000000011441ff7a /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00413562 mnFatalSignalHandler+00000154
+[  6] 0x00007fff99bdd52a           /usr/lib/system/libsystem_platform.dylib+00009514 _sigtramp+00000026
+[  7] 0x000000018a7f2ad0                                   <unknown-module>+00000000
+[  8] 0x000000017f8b2b85 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00240517 PyObject_Repr+00000051
+[  9] 0x000000017f8a51cb /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00184779 list_repr+00000173
+[ 10] 0x000000017f8b2cdd /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00240861 _PyObject_Str+00000127
+[ 11] 0x000000017f8bca10 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00281104 PyString_Format+00002245
+[ 12] 0x000000017f8ffc12 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00556050 PyEval_EvalFrameEx+00011364
+[ 13] 0x000000017f8fcd7a /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00544122 PyEval_EvalCodeEx+00001409
+[ 14] 0x000000017f90359d /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00570781 fast_function+00000117
+[ 15] 0x000000017f900400 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00558080 PyEval_EvalFrameEx+00013394
+[ 16] 0x000000017f8fcd7a /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00544122 PyEval_EvalCodeEx+00001409
+[ 17] 0x000000017f8a11ae /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00168366 function_call+00000350
+[ 18] 0x000000017f8830ea /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00045290 PyObject_Call+00000099
+[ 19] 0x000000017f88ded7 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00089815 instancemethod_call+00000174
+[ 20] 0x000000017f8830ea /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00045290 PyObject_Call+00000099
+[ 21] 0x000000017f8c980f /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00333839 slot_tp_call+00000061
+[ 22] 0x000000017f8830ea /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00045290 PyObject_Call+00000099
+[ 23] 0x000000017f8ffbd2 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00555986 PyEval_EvalFrameEx+00011300
+[ 24] 0x000000017f8fcd7a /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00544122 PyEval_EvalCodeEx+00001409
+[ 25] 0x000000017f8a11ae /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00168366 function_call+00000350
+[ 26] 0x000000017f8830ea /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00045290 PyObject_Call+00000099
+[ 27] 0x000000017f88ded7 /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00089815 instancemethod_call+00000174
+[ 28] 0x000000017f8830ea /usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib+00045290 PyObject_Call+00000099
+[ 29] 0x000000017f7c6d71 /Applications/MATLAB_R2016b.app/bin/maci64/libmwpycli.dylib+00056689 _ZN5pycli16createIPythonAPIERKNS_11PythonFuncsERKNS_14PythonTwoFuncsERKNS_16PythonThreeFuncsE+00005409
+[ 30] 0x000000017f7c282b /Applications/MATLAB_R2016b.app/bin/maci64/libmwpycli.dylib+00038955 _ZN5pycli3api6object8pyInvokeEPN6python7pyArrayERKNSt3__16vectorIN5boost10shared_ptrIS3_EENS5_9allocatorIS9_EEEERKNS6_INS5_4pairIS9_S9_EENSA_ISG_EEEE+00000091
+[ 31] 0x000000017f7d62b0 /Applications/MATLAB_R2016b.app/bin/maci64/libmwpycli.dylib+00119472 _ZN12PythonMethodC2EN5boost10shared_ptrIN6python7pyArrayEEES4_S4_+00003392
+[ 32] 0x000000011bec4873 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+00800883 _ZN24OpaqueMethodCallMetaData11callCMethodEPN4mcos13COSMethodInfoEPP11mxArray_tagPKNS0_9COSClientE+00000563
+[ 33] 0x000000011bec762b /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+00812587 _ZN24OpaqueMethodCallMetaData23callMethodOrConstructorEP11mxArray_tagbiPS1_iPPKS0_bPKN4mcos9COSClientEPS9_PPNS6_13COSMethodInfoEb+00000491
+[ 34] 0x000000011beca8c7 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+00825543 _ZN21OpaqueMethodMetaDataIC2EPN4mcos9COSClassIENS0_15COSInterfacePtrEPNS0_11COSPackageIENS0_9COSNameIDES6_bPKNS0_17MethodsAttributesE+00001703
+[ 35] 0x000000011bec64c2 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+00808130 _Z22omCallMethodWithClientP11mxArray_tagbS0_iPS0_iPPKS_PKN4mcos9COSClientEPS8_PPNS5_13COSMethodInfoE+00000354
+[ 36] 0x000000011bfedb15 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+02018069 _ZN16Mfh_MCOS_dynamic11dispatch_mfEiPP11mxArray_tagiS2_+00000437
+[ 37] 0x00000001144cce39 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_dispatcher.dylib+00020025 _ZN13Mfh_MATLAB_fn11dispatch_fhEiPP11mxArray_tagiS2_+00000505
+[ 38] 0x000000011bfecd4c /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcos_impl.dylib+02014540 _ZN10Mfh_opaque11dispatch_fhEiPP11mxArray_tagiS2_+00000028
+[ 39] 0x0000000115c35e5b /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+09735771 _ZN9MathWorks3lxe17LxeDispatcherImpl12apply_handleEPNS0_29DispatcherFunctionHandleTokenEmPNS0_6xvalueEmPKS4_+00000923
+[ 40] 0x0000000115d0b18d /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+10609037 _ZN9MathWorks3lxe19apply_opaque_handleEPvNS_2ts4TypeEPKvS1_S1_+00000125
+[ 41] 0x0000000115ca643e /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+10196030 _ZN9MathWorks3lxe38cpp_primitive_template_fn_with_contextIXadL_ZNS0_19apply_opaque_handleEPvNS_2ts4TypeEPKvS2_S2_EEEEbS2_S4_S6_S2_S2_+00000014
+[ 42] 0x000000011547dea1 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01642145 _ZN9MathWorks3lxe13IrInterpreter17ApplyCppPrimitiveEPN2ir4termES4_RKNS_2ts4TypeES8_+00000449
+[ 43] 0x000000011547d2bf /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01639103 _ZN9MathWorks3lxe13IrInterpreter31process_application_of_constantEPN2ir4termE+00001343
+[ 44] 0x000000011547b769 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01632105 _ZN9MathWorks3lxe13IrInterpreter13applyConstantEPN2ir4termE+00000073
+[ 45] 0x0000000115477582 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01615234 _ZN9MathWorks3lxe12IRTreeWalker9applyTermEPN2ir4termE+00000098
+[ 46] 0x000000011547799f /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01616287 _ZN9MathWorks3lxe12IRTreeWalker11getNextIRPCENS0_9irpc_typeE+00000559
+[ 47] 0x000000011547b550 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01631568 _ZN9MathWorks3lxe13IrInterpreter9tree_walkERKNS0_9irpc_typeES4_+00000160
+[ 48] 0x000000011547b420 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+01631264 _ZN9MathWorks3lxe13IrInterpreter9InterpretEv+00000144
+[ 49] 0x000000011559f667 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+02827879 _ZN9MathWorks3lxe15ExecutionDriver9ThreadRunEv+00003831
+[ 50] 0x00000001155a2e6e /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+02842222 _ZN9MathWorks3lxe12IrEngineImpl5ApplyERKN2ir6IrTreeEPvS6_+00000414
+[ 51] 0x0000000115b0c6ff /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08517375 _ZN9MathWorks3lxe17IrEngineDecorator5ApplyERKN2ir6IrTreeEPvS6_+00000159
+[ 52] 0x0000000115ac8223 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08237603 _ZN9MathWorks3lxe9Evaluator15ApplyStatementsERKN2ir6IrTreeERNS0_18IEvaluationContextE+00000435
+[ 53] 0x0000000115aca4e2 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08246498 _ZN9MathWorks3lxe9Evaluator17EvalStatementImplEPKcRNS0_18IEvaluationContextE+00000258
+[ 54] 0x0000000115aca5d8 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08246744 _ZN9MathWorks3lxe9Evaluator13EvalStatementERKNSt3__112basic_stringIDsNS2_11char_traitsIDsEENS2_9allocatorIDsEEEERNS0_18IEvaluationContextE+00000136
+[ 55] 0x0000000115b581ce /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08827342 _ZN9MathWorks3lxe9LxeBridge7EvalCmdERKNSt3__112basic_stringIDsNS2_11char_traitsIDsEENS2_9allocatorIDsEEEEb+00000382
+[ 56] 0x0000000115b58087 /Applications/MATLAB_R2016b.app/bin/maci64/libmwm_lxe.dylib+08827015 _ZN9MathWorks3lxe9LxeBridge7EvalCmdERKNSt3__112basic_stringIDsNS2_11char_traitsIDsEENS2_9allocatorIDsEEEEb+00000055
+[ 57] 0x00000001152ab54d /Applications/MATLAB_R2016b.app/bin/maci64/libmwbridge.dylib+00070989 _Z28evalCommandWithLongjmpSafetyRKNSt3__112basic_stringIDsNS_11char_traitsIDsEENS_9allocatorIDsEEEE+00000093
+[ 58] 0x00000001152abcbd /Applications/MATLAB_R2016b.app/bin/maci64/libmwbridge.dylib+00072893 _Z8mnParserv+00001165
+[ 59] 0x00000001143df953 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00149843 _ZN3mcr7runtime17InterpreterThread4Impl30mnParser_on_interpreter_threadEP11mcrInstance+00000035
+[ 60] 0x00000001143e1ee1 /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00159457 _ZN3mcr7runtime17InterpreterThread4Impl22TypedInvocationRequestIvE29doNotRethrowMxArrayExceptionsERKN5boost8functionIFvvEEE+00000033
+[ 61] 0x00000001143e297e /Applications/MATLAB_R2016b.app/bin/maci64/libmwmcr.dylib+00162174 _ZN5boost13packaged_taskIvEC2INS_3_bi6bind_tIvPFvRKNS_8functionIFvvEEEENS3_5list1I

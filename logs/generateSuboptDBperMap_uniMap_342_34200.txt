@@ -1,0 +1,112 @@
+generateSuboptDBperMap.m |    21-Aug-2016 14:17:00
+
+Scenario uniMap_342_34200
+error STD 0.0
+cutoff 1.0K
+
+Loaded scenarios/uniMap_342_34200.mat
+	maps 342 | problems 34200, 100.0 per map
+
+Running 100 random algorithms on the 34.2K problems, 342 maps
+1 | 1.270 * avg_{0.473}(2.058*c + h)+da | subopt 16.8 | solved 100.0% | 3.5 m
+2 | 1.618 * avg_{0.504}(9.466*c + h)+E | subopt 12.6 | solved 100.0% | 2.7 m
+3 | 1.295 * median_{0.623}(8.871*c + h)+E | subopt 12.6 | solved 100.0% | 3.3 m
+4 | 2.429 * avg_{0.335}(9.359*c + h) | subopt 21.8 | solved 100.0% | 4.9 m
+5 | 2.334 * median_{0.432}(3.732*c + h)+E | subopt 13.3 | solved 100.0% | 3.5 m
+6 | 2.411 * median_{0.039}(9.666*c + h) | subopt 30.6 | solved 99.8% | 6.0 m
+7 | 5.453 * max_{0.547}(2.274*c + h)+E | subopt 13.5 | solved 100.0% | 3.5 m
+8 | 5.325 * median_{0.674}(9.883*c + h)+da+E | subopt 12.9 | solved 100.0% | 3.8 m
+9 | 9.097 * avg_{0.743}(3.412*c + h)+da+E | subopt 18.1 | solved 99.4% | 4.0 m
+10 | 3.146 * min_{0.093}(9.805*c + h)+E | subopt 12.1 | solved 100.0% | 3.3 m
+11 | 9.332 * avg_{0.025}(5.843*c + h)+E | subopt 12.3 | solved 100.0% | 3.6 m
+12 | 5.002 * median_{0.682}(2.479*c + h) | subopt 17.1 | solved 100.0% | 4.6 m
+13 | 3.986 * median_{0.952}(1.310*c + h) | subopt 15.2 | solved 100.0% | 4.2 m
+14 | 3.940 * median_{0.804}(8.412*c + h)+da | subopt 16.7 | solved 100.0% | 4.4 m
+15 | 4.362 * median_{0.879}(2.957*c + h)+da+E | subopt 12.9 | solved 100.0% | 3.4 m
+16 | 4.479 * median_{0.364}(8.205*c + h)+da | subopt 27.7 | solved 99.9% | 5.7 m
+17 | 9.317 * avg_{0.951}(9.902*c + h)+da+E | subopt 113.6 | solved 89.1% | 7.4 m
+18 | 9.586 * avg_{0.015}(3.785*c + h)+da+E | subopt 12.4 | solved 100.0% | 3.2 m
+19 | 9.563 * min_{0.703}(5.353*c + h) | subopt 35.2 | solved 99.7% | 6.0 m
+20 | 1.709 * max_{0.167}(6.483*c + h) | subopt 28.1 | solved 99.9% | 5.4 m
+21 | 7.827 * median_{0.707}(4.557*c + h)+E | subopt 13.3 | solved 100.0% | 3.5 m
+22 | 9.031 * median_{0.313}(2.310*c + h)+E | subopt 12.6 | solved 100.0% | 3.3 m
+23 | 8.707 * median_{0.672}(3.822*c + h)+da | subopt 17.2 | solved 100.0% | 4.5 m
+24 | 5.732 * avg_{0.738}(5.501*c + h) | subopt 18.8 | solved 99.9% | 4.2 m
+25 | 3.229 * avg_{0.676}(1.377*c + h)+E | subopt 13.7 | solved 99.9% | 3.4 m
+26 | 4.527 * avg_{0.529}(6.157*c + h)+da | subopt 15.1 | solved 100.0% | 4.1 m
+27 | 9.822 * min_{0.794}(5.244*c + h)+da+E | subopt 12.1 | solved 100.0% | 3.3 m
+28 | 7.788 * max_{0.615}(6.991*c + h) | subopt 16.8 | solved 100.0% | 4.1 m
+29 | 9.181 * max_{0.804}(2.824*c + h) | subopt 35.5 | solved 99.2% | 6.2 m
+30 | 6.724 * avg_{0.341}(1.754*c + h)+da+E | subopt 13.4 | solved 100.0% | 3.5 m
+31 | 8.954 * median_{0.571}(1.395*c + h)+da | subopt 22.9 | solved 100.0% | 5.2 m
+32 | 9.723 * median_{0.406}(7.460*c + h)+da+E | subopt 13.2 | solved 100.0% | 3.4 m
+33 | 2.548 * max_{0.548}(4.698*c + h)+E | subopt 13.7 | solved 100.0% | 3.4 m
+34 | 8.525 * min_{0.990}(4.649*c + h)+da+E | subopt 12.2 | solved 100.0% | 3.4 m
+35 | 2.778 * avg_{0.288}(8.096*c + h)+da | subopt 21.3 | solved 100.0% | 4.7 m
+36 | 6.009 * median_{0.237}(9.169*c + h)+da | subopt 23.6 | solved 100.0% | 5.1 m
+37 | 3.388 * avg_{0.372}(2.296*c + h)+da+E | subopt 13.6 | solved 100.0% | 3.4 m
+38 | 4.800 * median_{0.305}(9.958*c + h)+E | subopt 12.6 | solved 100.0% | 3.2 m
+39 | 1.010 * median_{0.637}(1.183*c + h)+da+E | subopt 13.2 | solved 100.0% | 3.5 m
+40 | 1.425 * avg_{0.210}(6.029*c + h)+da | subopt 20.2 | solved 100.0% | 4.6 m
+41 | 1.450 * avg_{0.364}(3.868*c + h)+E | subopt 13.4 | solved 100.0% | 3.4 m
+42 | 5.614 * min_{0.185}(4.984*c + h) | subopt 35.1 | solved 99.8% | 6.1 m
+43 | 9.190 * max_{0.238}(1.695*c + h)+da | subopt 32.0 | solved 99.8% | 6.2 m
+44 | 2.039 * median_{0.300}(1.357*c + h)+da+E | subopt 12.7 | solved 100.0% | 3.5 m
+45 | 2.708 * avg_{0.818}(3.150*c + h)+E | subopt 29.7 | solved 97.9% | 4.2 m
+46 | 6.928 * avg_{0.553}(4.816*c + h)+da | subopt 15.5 | solved 99.9% | 4.2 m
+47 | 5.447 * median_{0.165}(6.233*c + h)+da | subopt 25.5 | solved 100.0% | 5.4 m
+48 | 1.927 * max_{0.919}(9.755*c + h)+E | subopt 101.9 | solved 90.3% | 7.0 m
+49 | 8.357 * avg_{0.675}(6.035*c + h)+da+E | subopt 17.4 | solved 99.5% | 3.7 m
+50 | 6.316 * min_{0.849}(3.158*c + h)+E | subopt 12.7 | solved 100.0% | 3.6 m
+51 | 9.130 * median_{0.540}(2.058*c + h) | subopt 23.5 | solved 100.0% | 5.2 m
+52 | 1.966 * median_{0.700}(9.193*c + h)+E | subopt 12.6 | solved 100.0% | 3.6 m
+53 | 2.946 * median_{0.676}(1.428*c + h)+E | subopt 12.6 | solved 100.0% | 3.5 m
+54 | 4.163 * avg_{0.607}(3.989*c + h)+E | subopt 13.2 | solved 100.0% | 3.6 m
+55 | 5.373 * avg_{0.582}(1.811*c + h)+da | subopt 15.8 | solved 99.9% | 4.3 m
+56 | 5.397 * avg_{0.345}(5.385*c + h) | subopt 21.5 | solved 99.9% | 4.8 m
+57 | 1.146 * median_{0.317}(8.793*c + h) | subopt 26.0 | solved 99.9% | 5.3 m
+58 | 3.932 * min_{0.485}(1.904*c + h)+da | subopt 35.3 | solved 99.8% | 5.2 m
+59 | 2.477 * median_{0.845}(3.307*c + h)+da+E | subopt 12.6 | solved 100.0% | 2.8 m
+60 | 3.668 * max_{0.355}(1.141*c + h) | subopt 25.1 | solved 100.0% | 3.9 m
+61 | 5.568 * max_{0.798}(6.137*c + h)+da | subopt 33.9 | solved 99.4% | 5.3 m
+62 | 1.908 * avg_{0.826}(3.737*c + h)+da | subopt 15.5 | solved 100.0% | 3.2 m
+63 | 9.351 * max_{0.289}(2.302*c + h)+da+E | subopt 12.3 | solved 100.0% | 2.6 m
+64 | 4.851 * median_{0.065}(1.173*c + h)+da | subopt 35.7 | solved 99.7% | 5.3 m
+65 | 2.970 * avg_{0.403}(2.876*c + h)+E | subopt 13.2 | solved 100.0% | 2.7 m
+66 | 1.068 * min_{0.613}(3.685*c + h)+da | subopt 19.6 | solved 100.0% | 3.8 m
+67 | 7.810 * median_{0.858}(5.252*c + h)+da | subopt 17.6 | solved 100.0% | 3.7 m
+68 | 2.668 * avg_{0.503}(2.691*c + h)+da+E | subopt 13.0 | solved 100.0% | 2.7 m
+69 | 1.293 * avg_{0.818}(9.633*c + h)+da+E | subopt 12.6 | solved 100.0% | 2.8 m
+70 | 8.975 * median_{0.912}(9.832*c + h)+da+E | subopt 13.4 | solved 100.0% | 2.8 m
+71 | 8.472 * median_{0.015}(2.088*c + h)+da+E | subopt 12.5 | solved 100.0% | 2.7 m
+72 | 6.016 * median_{0.401}(1.526*c + h) | subopt 22.6 | solved 100.0% | 3.8 m
+73 | 8.551 * min_{0.623}(3.988*c + h)+da | subopt 34.9 | solved 99.7% | 5.3 m
+74 | 7.162 * avg_{0.785}(4.557*c + h) | subopt 28.3 | solved 99.5% | 4.6 m
+75 | 5.553 * median_{0.454}(1.054*c + h)+da+E | subopt 13.7 | solved 100.0% | 2.9 m
+76 | 7.930 * avg_{0.193}(8.291*c + h)+da+E | subopt 12.3 | solved 100.0% | 2.7 m
+77 | 2.177 * min_{0.356}(2.731*c + h)+E | subopt 12.5 | solved 100.0% | 2.7 m
+78 | 3.248 * min_{0.300}(8.431*c + h) | subopt 34.3 | solved 99.8% | 4.7 m
+79 | 1.071 * median_{0.197}(1.912*c + h)+da | subopt 17.0 | solved 100.0% | 3.5 m
+80 | 5.532 * avg_{0.507}(2.516*c + h)+da+E | subopt 13.1 | solved 100.0% | 2.8 m
+81 | 1.638 * median_{0.995}(8.285*c + h) | subopt 15.1 | solved 100.0% | 3.2 m
+82 | 5.082 * median_{0.968}(1.967*c + h) | subopt 15.6 | solved 100.0% | 3.3 m
+83 | 9.020 * avg_{0.030}(8.321*c + h)+da | subopt 31.7 | solved 99.8% | 5.0 m
+84 | 9.811 * min_{0.186}(7.801*c + h)+E | subopt 12.1 | solved 100.0% | 2.7 m
+85 | 1.966 * min_{0.285}(2.166*c + h)+da+E | subopt 12.3 | solved 100.0% | 2.7 m
+86 | 5.707 * median_{0.279}(1.793*c + h)+da | subopt 28.8 | solved 99.9% | 4.8 m
+87 | 8.134 * avg_{0.625}(2.111*c + h)+da | subopt 20.6 | solved 99.7% | 3.9 m
+88 | 1.115 * avg_{0.223}(8.641*c + h)+da | subopt 17.0 | solved 100.0% | 3.4 m
+89 | 8.522 * avg_{0.022}(2.915*c + h)+da+E | subopt 12.4 | solved 100.0% | 2.8 m
+90 | 1.953 * avg_{0.967}(6.379*c + h)+da | subopt 15.6 | solved 100.0% | 3.3 m
+91 | 1.999 * avg_{0.887}(3.512*c + h)+da | subopt 15.6 | solved 100.0% | 3.3 m
+92 | 9.367 * median_{0.112}(1.391*c + h)+E | subopt 12.5 | solved 100.0% | 2.7 m
+93 | 4.439 * avg_{0.800}(6.726*c + h)+E | subopt 77.6 | solved 92.8% | 4.4 m
+94 | 8.329 * avg_{0.243}(9.157*c + h)+E | subopt 12.4 | solved 100.0% | 2.7 m
+95 | 3.721 * median_{0.634}(2.343*c + h) | subopt 16.7 | solved 100.0% | 3.3 m
+96 | 4.487 * median_{0.103}(6.938*c + h)+da+E | subopt 12.3 | solved 100.0% | 2.7 m
+97 | 6.501 * min_{0.419}(3.510*c + h)+da | subopt 34.9 | solved 99.7% | 5.3 m
+98 | 8.824 * avg_{0.846}(8.430*c + h)+da+E | subopt 112.3 | solved 89.2% | 6.0 m
+99 | 9.214 * median_{0.915}(2.130*c + h)+E | subopt 13.1 | solved 100.0% | 2.7 m
+100 | 7.824 * median_{0.258}(2.086*c + h)+E | subopt 12.6 | solved 100.0% | 2.7 m
+
+Total time 6.6 h
