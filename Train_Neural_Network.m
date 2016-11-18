@@ -5,14 +5,14 @@ function [] = Train_Neural_Network(load_existing, name, cont)
     end
 
     import py.learner.Learner;
+    
     if(load_existing)
        learn = py.learner.Learner(name);
     else
        learn = py.learner.Learner(); 
     end
-    ma
     if(cont)
-       load('problem_number.save', problem_number);
+       load('problem_number', 'problem_number');
     else
        problem_number = 1;
     end
@@ -37,8 +37,8 @@ function [] = Train_Neural_Network(load_existing, name, cont)
     %scenarioName = 'scenarios/uniMap_3_9.mat';
     %scenarioName = 'scenarios/uniMap_342_1710.mat';
     %scenarioName = 'scenarios/uniMap_8_16.mat';
-    scenarioName = 'scenarios/uniMap_50_500.mat';
-    %scenarioName = 'scenarios/uniMap_8_80.mat';
+    %scenarioName = 'scenarios/uniMap_50_500.mat';
+    scenarioName = 'scenarios/uniMap_8_80.mat';
     %scenarioName = 'scenarios/uniMap_200_10000.mat';
     %scenarioName = 'scenarios/uniMap_100_5000.mat';
     %scenarioName = 'scenarios/uniMap_100_20000.mat';

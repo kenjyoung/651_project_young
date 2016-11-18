@@ -1,65 +1,6 @@
-generateSuboptDBperMap.m |    17-Nov-2016 12:48:09
+generateSuboptDBperMap.m |    17-Nov-2016 21:58:35
 
 Scenario uniMap_8_80
 error STD 0.0
 cutoff 1.0K
 
-Loaded scenarios/uniMap_8_80.mat
-	maps 8 | problems 80, 10.0 per map
-subopt 1.2 | solved 1 | 36.53 s
-subopt 1.0 | solved 1 | 20.65 s
-subopt 1.0 | solved 1 | 4.83 s
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('function_module>__call__', '/usr/local/lib/python2.7/site-packages/theano/compile/function_module.py', 859)" style="font-weight:bold">function_module>__call__</a> (<a href="matlab: opentoline('/usr/local/lib/python2.7/site-packages/theano/compile/function_module.py',859,0)">line
-859</a>)
-Python Error: RuntimeError: BaseGpuCorrMM:
-Failed to allocate output of 8 x 32 x 124 x
-124
-Apply node that caused the error:
-GpuCorrMM_gradInputs{valid, (2,
-2)}(GpuContiguous.0, GpuContiguous.0,
-TensorConstant{124}, TensorConstant{124})
-Toposort index: 108
-Inputs types: [CudaNdarrayType(float32, 4D),
-CudaNdarrayType(float32, 4D),
-TensorType(int64, scalar), TensorType(int64,
-scalar)]
-Inputs shapes: [(16, 32, 3, 3), (8, 16, 61,
-61), (), ()]
-Inputs strides: [(288, 9, 3, 1), (59536,
-3721, 61, 1), (), ()]
-Inputs values: ['not shown', 'not shown',
-array(124), array(124)]
-Outputs clients: [[GpuElemwise{Composite{((i0
-* i1) + (i0 * i1 * sgn(i2)))}}[(0,
-1)](CudaNdarrayConstant{[[[[ 0.5]]]]},
-GpuCorrMM_gradInputs{valid, (2, 2)}.0,
-GpuElemwise{Add}[(0, 0)].0)]]
-
-HINT: Re-running with most Theano
-optimization disabled could give you a
-back-trace of when this node was created.
-This can be done with by setting the Theano
-flag 'optimizer=fast_compile'. If that does
-not work, Theano optimizations can be
-disabled with 'optimizer=None'.
-HINT: Use the Theano flag
-'exception_verbosity=high' for a debugprint
-and storage map footprint of this apply node.
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('link>raise_with_op', '/usr/local/lib/python2.7/site-packages/theano/gof/link.py', 314)" style="font-weight:bold">link>raise_with_op</a> (<a href="matlab: opentoline('/usr/local/lib/python2.7/site-packages/theano/gof/link.py',314,0)">line 314</a>)
-    reraise(exc_type, exc_value, exc_trace)
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('function_module>__call__', '/usr/local/lib/python2.7/site-packages/theano/compile/function_module.py', 871)" style="font-weight:bold">function_module>__call__</a> (<a href="matlab: opentoline('/usr/local/lib/python2.7/site-packages/theano/compile/function_module.py',871,0)">line 871</a>)
-                    storage_map=getattr(self.fn,
-                    'storage_map', None))
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('learner>learn', 'learner/learner.py', 198)" style="font-weight:bold">learner>learn</a> (<a href="matlab: opentoline('learner/learner.py',198,0)">line 198</a>)
-        self._update_Q(states1, actions,
-        targets)
-
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('learningdaDRTAA_train', '/Users/kenny_789/CMPUT651/cmput651testbedF16/learningdaDRTAA_train.m', 34)" style="font-weight:bold">learningdaDRTAA_train</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/learningdaDRTAA_train.m',34,0)">line 34</a>)
-        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,true);
-        
-Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Train_Neural_Network', '/Users/kenny_789/CMPUT651/cmput651testbedF16/Train_Neural_Network.m', 71)" style="font-weight:bold">Train_Neural_Network</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/Train_Neural_Network.m',71,0)">line 71</a>)
-    [subopt, ~, solved] =
-    learningdaDRTAA_train(learn,loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate);} 

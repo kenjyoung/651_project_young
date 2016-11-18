@@ -31,11 +31,11 @@ for n = problem_number:nProblems
     % Run the algorithm
     tt = tic();
     [solution, sc(n), solved(n)] =  ...
-        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,true);
+        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
     %save the trained network after each episode
     save(learner);
     problem_number = n;
-    save('problem_number.save', problem_number)
+    save('problem_number', 'problem_number');
     subopt(n) = solution / hs;
     fprintf('subopt %0.1f | solved %d | %s\n',...
         subopt(n),solved(n),sec2str(toc(tt)));
