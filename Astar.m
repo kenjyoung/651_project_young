@@ -61,6 +61,7 @@ function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neig
     for j=1:num_elements
         open_list(end+1) = pq_pop(open);
     end
+    pq_delete(open)
 
 %      path = [best_state];
 %      curr = best_state;

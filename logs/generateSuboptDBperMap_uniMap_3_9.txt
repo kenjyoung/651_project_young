@@ -1,4 +1,4 @@
-generateSuboptDBperMap.m |    18-Nov-2016 10:04:33
+generateSuboptDBperMap.m |    19-Nov-2016 14:51:29
 
 Scenario uniMap_3_9
 error STD 0.0
@@ -6,14 +6,62 @@ cutoff 1.0K
 
 Loaded scenarios/uniMap_3_9.mat
 	maps 3 | problems 9, 3.0 per map
-subopt 1.0 | solved 1 | 0.19 s
-subopt 1.0 | solved 1 | 0.52 s
-subopt 1.0 | solved 1 | 0.85 s
-subopt 1.1 | solved 1 | 1.76 s
-subopt 1.0 | solved 1 | 0.52 s
-subopt 1.0 | solved 1 | 0.43 s
-subopt 1.3 | solved 1 | 2.91 s
-subopt 15.5 | solved 1 | 46.16 s
-subopt 23.3 | solved 1 | 44.69 s
-subopt 5.1 | solved 100.0% | 1.5 m
+Starting parallel pool (parpool) using the 'local' profile ... connected to 4 workers.
+subopt 1.0 | solved 1 | 0.10 s
+subopt 1.0 | solved 1 | 0.09 s
+subopt 1.0 | solved 1 | 0.21 s
+subopt 1.0 | solved 1 | 0.10 s
+subopt 1.0 | solved 1 | 0.15 s
+subopt 1.2 | solved 1 | 0.61 s
+subopt 1.5 | solved 1 | 0.79 s
+subopt 18.7 | solved 1 | 31.97 s
+Operation terminated by user during path (line 109)
+
+
+In addpath (line 88)
+    path(p, mp);
+
+In Astar (line 2)
+    addpath('priority_queue')
+
+In daDRTAA (line 33)
+        [best, closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, depth);
+
+In parallel_function>make_general_channel/channel_general (line 914)
+                    O = F(C{:});
+
+In remoteParallelFunction (line 38)
+        out = parallel.internal.pool.serialize(feval(channel, channelArgs{:}));
+
+{Operation terminated by user during
+<a href="matlab:matlab.internal.language.introspective.errorDocCallback('distcomp.remoteparfor/getCompleteIntervals', '/usr/local/MATLAB/R2016b/toolbox/distcomp/distcomp/+distcomp/remoteparfor.m', 127)" style="font-weight:bold">distcomp.remoteparfor/getCompleteIntervals</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2016b/toolbox/distcomp/distcomp/+distcomp/remoteparfor.m',127,0)">line 127</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function>distributed_execution', '/usr/local/MATLAB/R2016b/toolbox/matlab/lang/parallel_function.p', 820)" style="font-weight:bold">parallel_function>distributed_execution</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2016b/toolbox/matlab/lang/parallel_function.p',820,0)">line 820</a>)
+        [tags, out] = P.getCompleteIntervals(chunkSize);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('parallel_function', '/usr/local/MATLAB/R2016b/toolbox/matlab/lang/parallel_function.p', 587)" style="font-weight:bold">parallel_function</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2016b/toolbox/matlab/lang/parallel_function.p',587,0)">line 587</a>)
+        R = distributed_execution(...
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA_eval', '/home/kenny/CMPUT651/651_project_young/daDRTAA_eval.m', 13)" style="font-weight:bold">daDRTAA_eval</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/daDRTAA_eval.m',13,0)">line 13</a>)
+parfor n = 1:nProblems
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA_generateSuboptDBperMap', '/home/kenny/CMPUT651/651_project_young/daDRTAA_generateSuboptDBperMap.m', 71)" style="font-weight:bold">daDRTAA_generateSuboptDBperMap</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/daDRTAA_generateSuboptDBperMap.m',71,0)">line 71</a>)
+[subopt, ~, solved] =
+daDRTAA_eval(loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,da,depth,commit);} 
+Train_Neural_Network(false,'',false)
+{Error: <a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/Train_Neural_Network.m',7,12)">File: Train_Neural_Network.m Line: 7 Column: 12
+</a>Arguments to IMPORT must either end with ".*" or else
+specify a fully qualified class name: "py.learner.Learner"
+fails this test.
+} 
+if count(py.sys.path,'learner') == 0
+         insert(py.sys.path,int32(0),'learner');
+    end
+
+    import py.learner.Learner;
+       learn = py.learner.Learner(); 
+{Undefined function or variable 'py.learner.Learner'.
+} 
+learn = py.learner.Learner();
 Train_Neural_Network(false,'',false)

@@ -1,22 +1,6 @@
-generateSuboptDBperMap.m |    19-Nov-2016 08:46:33
+generateSuboptDBperMap.m |    19-Nov-2016 14:54:02
 
 Scenario uniMap_8_80
 error STD 0.0
 cutoff 1.0K
 
-Loaded scenarios/uniMap_8_80.mat
-	maps 8 | problems 80, 10.0 per map
-subopt 1.2 | solved 1 | 19.88 s
-subopt 1.1 | solved 1 | 1.3 m
-subopt 1.0 | solved 1 | 30.18 s
-{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('learningdaDRTAA', '/home/kenny/CMPUT651/651_project_young/learningdaDRTAA.m', 118)" style="font-weight:bold">learningdaDRTAA</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/learningdaDRTAA.m',118,0)">line
-118</a>)
-
-
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('learningdaDRTAA_train', '/home/kenny/CMPUT651/651_project_young/learningdaDRTAA_train.m', 34)" style="font-weight:bold">learningdaDRTAA_train</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/learningdaDRTAA_train.m',34,0)">line 34</a>)
-        learningdaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,false);
-        
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Train_Neural_Network', '/home/kenny/CMPUT651/651_project_young/Train_Neural_Network.m', 77)" style="font-weight:bold">Train_Neural_Network</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/Train_Neural_Network.m',77,0)">line 77</a>)
-    [subopt, ~, solved] =
-    learningdaDRTAA_train(learn,loadedScenario.problem,loadedScenario.maps,numProblems,cutoff,errorRate,problem_number);} 
-visualizedaDRTAA
