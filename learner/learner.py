@@ -9,7 +9,7 @@ input_shape = (7, 128, 128)
 num_params = 3
 class Learner:
     def __init__(self, loadfile = None, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
-        self.mem = replay_memory(2500, input_shape, num_params)
+        self.mem = replay_memory(5000, input_shape, num_params)
         self.gamma = gamma
 
         #Create Input Variables
@@ -37,6 +37,7 @@ class Learner:
             p_in,
             num_filters=32, filter_size=(5,5),
             nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
             W=lasagne.init.HeNormal(gain='relu')
         )
 
@@ -56,8 +57,24 @@ class Learner:
             W=lasagne.init.HeNormal(gain='relu')
         )
 
+        p_conv4 = lasagne.layers.Conv2DLayer(
+            p_conv3,
+            num_filters=32, filter_size=(3,3),
+            nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
+            W=lasagne.init.HeNormal(gain='relu')
+        )
+
+        p_conv5 = lasagne.layers.Conv2DLayer(
+            p_conv4,
+            num_filters=32, filter_size=(3,3),
+            nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
+            W=lasagne.init.HeNormal(gain='relu')
+        )
+
         p_hidden = lasagne.layers.DenseLayer(
-            p_conv3, num_units=64,
+            p_conv5, num_units=64,
             nonlinearity=lasagne.nonlinearities.rectify,
             W=lasagne.init.HeNormal(gain='relu')
         )
@@ -85,6 +102,7 @@ class Learner:
             q_in,
             num_filters=32, filter_size=(5,5),
             nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
             W=lasagne.init.HeNormal(gain='relu')
         )
 
@@ -104,8 +122,24 @@ class Learner:
             W=lasagne.init.HeNormal(gain='relu')
         )
 
+        q_conv4 = lasagne.layers.Conv2DLayer(
+            q_conv3,
+            num_filters=32, filter_size=(3,3),
+            nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
+            W=lasagne.init.HeNormal(gain='relu')
+        )
+
+        q_conv5 = lasagne.layers.Conv2DLayer(
+            q_conv4,
+            num_filters=32, filter_size=(3,3),
+            nonlinearity = lasagne.nonlinearities.rectify,
+            stride = 1,
+            W=lasagne.init.HeNormal(gain='relu')
+        )
+
         q_hidden = lasagne.layers.DenseLayer(
-            q_conv3, num_units=64,
+            q_conv5, num_units=64,
             nonlinearity=lasagne.nonlinearities.rectify,
             W=lasagne.init.HeNormal(gain='relu')
         )
