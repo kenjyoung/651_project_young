@@ -19,7 +19,7 @@ function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neig
     pq_push(open,i,getH(i,h,errorRate));
     
     expansions = 0;
-    while ((expansions < k) && ~isequal(size(open,2),0) && i ~= iGoal)
+    while ((expansions < k) && ~isequal(pq_size(open),0) && i ~= iGoal)
         % Remove min f value from open list
         i = pq_pop(open);
         if any(i == closed)
@@ -37,24 +37,25 @@ function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neig
         hN = getH(iN,h,errorRate);
         
         % Update neighbors and open list
-        for j=1:size(iN,2)
+        for j=1:length(iN)
            n = iN(j);
            if ~any(n == closed) && (~isKey(g,n) || g(n) > g(i) + gN(j))
               g(n) = g(i)+gN(j);
               p(n) = i;
 
               %Add n to open list with new f value
-              pq_push(open,n,g(n)+hN(j));
+              pq_push(open,n,-(g(n)+hN(j)));
            end
         end
     end
 
-    if(isequal(size(open,2),0) && i ~= iGoal)
+    if(isequal(pq_size(open),0) && i ~= iGoal)
         unreachable = true;
         return
     end
 
     [i, best] = pq_pop(open);
+    best = -best;
     num_elements = pq_size(open);
     open_list = [i];
     for j=1:num_elements

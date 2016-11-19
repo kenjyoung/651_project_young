@@ -9,7 +9,7 @@ input_shape = (7, 128, 128)
 num_params = 3
 class Learner:
     def __init__(self, loadfile = None, gamma = 1, alpha = 0.001, rho = 0.9, epsilon = 1e-6):
-        self.mem = replay_memory(1000, input_shape, num_params)
+        self.mem = replay_memory(2500, input_shape, num_params)
         self.gamma = gamma
 
         #Create Input Variables
@@ -42,7 +42,7 @@ class Learner:
 
         p_conv2 = lasagne.layers.Conv2DLayer(
             p_conv1,
-            num_filters=16, filter_size=(3,3),
+            num_filters=32, filter_size=(3,3),
             nonlinearity = lasagne.nonlinearities.rectify,
             stride = 2,
             W=lasagne.init.HeNormal(gain='relu')
@@ -50,7 +50,7 @@ class Learner:
 
         p_conv3 = lasagne.layers.Conv2DLayer(
             p_conv2,
-            num_filters=16, filter_size=(3,3),
+            num_filters=32, filter_size=(3,3),
             nonlinearity = lasagne.nonlinearities.rectify,
             stride = 2,
             W=lasagne.init.HeNormal(gain='relu')
@@ -90,7 +90,7 @@ class Learner:
 
         q_conv2 = lasagne.layers.Conv2DLayer(
             q_conv1,
-            num_filters=16, filter_size=(3,3),
+            num_filters=32, filter_size=(3,3),
             nonlinearity = lasagne.nonlinearities.rectify,
             stride = 2,
             W=lasagne.init.HeNormal(gain='relu')
@@ -98,7 +98,7 @@ class Learner:
 
         q_conv3 = lasagne.layers.Conv2DLayer(
             q_conv2,
-            num_filters=16, filter_size=(3,3),
+            num_filters=32, filter_size=(3,3),
             nonlinearity = lasagne.nonlinearities.rectify,
             stride = 2,
             W=lasagne.init.HeNormal(gain='relu')

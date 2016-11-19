@@ -3,10 +3,6 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
     %% Universal LRTA*, incorporates elements from wLRTA*, wbLRTA*, LRTA*-E, daLRTA* and SLA*T
     % Vadim Bulitko
     % February 25, 2016
-    
-    %%TODO: idea: commit to several steps at a time, maybe there isn't much
-    %%point totally rerunning A* from scratch if we only take one step
-    %%first
 
     %% Preliminaries
     % Set initial parameters
@@ -50,7 +46,7 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
            best_state = iGoal;
            best_value = 0;
         else
-            for j=1:size(open,2)
+            for j=1:length(open)
                s = open(j);
                delta = h(s) - h0(s);
                value = g(s) + h(s) + da*delta;
@@ -70,10 +66,10 @@ function [distTraveled, meanScrubbing, solved] = daDRTAA(i,map,goal,neighborhood
         end 
         path = fliplr(path);
         
-        path_index = min(size(path,2), commit+1);
+        path_index = min(length(path), commit+1);
         i = path(path_index);
         distTraveled = distTraveled + g(i);
-        for j=1:size(closed,2)
+        for j=1:length(closed)
            s = closed(j);
            hnew = max(best-g(s), h(s));
            updateMagnitude = abs(h(s) - hnew);

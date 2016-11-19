@@ -14,7 +14,7 @@ cutoff = 1000;
 
 da = 10;
 commit = 1;
-depth = 20;
+depth = 10;
 
 scenarioName = 'scenarios/yngvi_5.mat';
 
