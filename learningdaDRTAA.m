@@ -36,11 +36,8 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         
         da = action(1)*da_max;
         depth = ceil(action(2)*depth_max);
-        if(da<1)
-            da = 1;
-        end
-        if(depth<1)
-           depth = 1; 
+        if(da<=0)
+           da=0; 
         end
         commit = ceil(action(3)*depth); %keep commit strictly less than depth
         
@@ -115,7 +112,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
         
         %update replay memory and preform a learning step
         update_memory(learner, state, action, reward, new_state, terminal);
-        learn(learner, 8);
+        learn(learner, 16);
     end
 
     %% Compute scrubbing
