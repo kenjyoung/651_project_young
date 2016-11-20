@@ -44,7 +44,7 @@ function [] = Train_Neural_Network(load_existing, name, cont)
     %scenarioName = 'scenarios/uniMap_100_20000.mat';
     %scenarioName = 'scenarios/uniMap_342_34200.mat';
     %scenarioName = 'scenarios/uniMap_342_17100.mat';
-    scenarioName = scenarios/MovingAI_342_493298.mat;
+    scenarioName = 'scenarios/MovingAI_342_493298.mat';
 
     [~, sName, ~] = fileparts(scenarioName);
 

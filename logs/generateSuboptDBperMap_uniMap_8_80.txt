@@ -4,3 +4,93 @@ Scenario uniMap_8_80
 error STD 0.0
 cutoff 100
 
+Loaded scenarios/uniMap_8_80.mat
+	maps 8 | problems 80, 10.0 per map
+subopt 1.0 | solved 1 | 0.84 s
+subopt 1.2 | solved 1 | 25.34 s
+subopt 1.0 | solved 1 | 2.74 s
+subopt 13.6 | solved 1 | 5.7 m
+subopt 10.3 | solved 1 | 5.3 m
+subopt 1.0 | solved 1 | 2.32 s
+subopt 1.3 | solved 1 | 14.51 s
+subopt 1.3 | solved 1 | 9.61 s
+subopt 1.0 | solved 1 | 5.47 s
+subopt 3.6 | solved 1 | 1.8 m
+subopt 3.9 | solved 1 | 9.0 m
+subopt 15.3 | solved 1 | 40.3 m
+subopt 1.2 | solved 1 | 18.44 s
+subopt 2.3 | solved 1 | 2.5 m
+subopt 3.9 | solved 1 | 5.4 m
+subopt 1.4 | solved 1 | 22.37 s
+subopt 2.1 | solved 1 | 32.63 s
+subopt 2.8 | solved 1 | 3.3 m
+subopt 1.7 | solved 1 | 3.1 m
+subopt 1.7 | solved 1 | 2.1 m
+subopt 1.0 | solved 1 | 0.40 s
+subopt 1.0 | solved 1 | 0.77 s
+subopt 1.0 | solved 1 | 0.46 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 1.0 | solved 1 | 0.40 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 1.0 | solved 1 | 0.39 s
+subopt 5.3 | solved 1 | 3.9 m
+subopt 2.3 | solved 1 | 1.7 m
+subopt 1.0 | solved 1 | 3.09 s
+subopt 34.1 | solved 1 | 36.4 m
+subopt 1.0 | solved 1 | 2.33 s
+subopt 26.6 | solved 1 | 8.6 m
+subopt 1.0 | solved 1 | 1.18 s
+subopt 5.4 | solved 1 | 5.8 m
+subopt 1.1 | solved 1 | 7.66 s
+subopt 1.0 | solved 1 | 1.94 s
+subopt 1.2 | solved 1 | 11.16 s
+subopt 2.8 | solved 1 | 1.5 m
+subopt 2.3 | solved 1 | 27.67 s
+subopt 8.3 | solved 1 | 6.6 m
+subopt 1.8 | solved 1 | 5.40 s
+subopt 1.5 | solved 1 | 59.07 s
+subopt 4.4 | solved 1 | 5.1 m
+subopt 1.0 | solved 1 | 1.19 s
+subopt 2.8 | solved 1 | 38.51 s
+subopt 8.1 | solved 1 | 7.9 m
+subopt 6.9 | solved 1 | 3.5 m
+subopt 1.4 | solved 1 | 32.05 s
+subopt 1.3 | solved 1 | 14.96 s
+subopt 1.0 | solved 1 | 2.08 s
+subopt 1.1 | solved 1 | 12.26 s
+subopt 1.0 | solved 1 | 2.03 s
+subopt 7.8 | solved 1 | 4.5 m
+subopt 1.0 | solved 1 | 1.65 s
+subopt 1.0 | solved 1 | 3.16 s
+subopt 1.8 | solved 1 | 30.53 s
+subopt 2.9 | solved 1 | 54.33 s
+subopt 1.5 | solved 1 | 30.21 s
+subopt 35.5 | solved 1 | 52.2 m
+subopt 13.3 | solved 1 | 12.9 m
+subopt 1.0 | solved 1 | 1.57 s
+subopt 1.1 | solved 1 | 15.00 s
+subopt 1.3 | solved 1 | 19.50 s
+subopt 1.0 | solved 1 | 1.59 s
+subopt 8.2 | solved 1 | 6.0 m
+subopt 61.7 | solved 1 | 1.5 h
+subopt 1.5 | solved 1 | 8.83 s
+subopt 1.0 | solved 1 | 1.96 s
+subopt 1.0 | solved 1 | 1.19 s
+subopt 1.1 | solved 1 | 8.89 s
+subopt 1.0 | solved 1 | 5.02 s
+subopt 1.1 | solved 1 | 11.24 s
+subopt 1.0 | solved 1 | 0.80 s
+subopt 1.0 | solved 1 | 2.72 s
+subopt 1.0 | solved 1 | 3.87 s
+subopt 1.7 | solved 1 | 11.48 s
+subopt 4.5 | solved 100.0% | 5.5 h
+Train_Neural_Network(true,'learner.save',false);
+{Undefined function or variable 'scenarios'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Train_Neural_Network', '/home/kenny/CMPUT651/651_project_young/Train_Neural_Network.m', 47)" style="font-weight:bold">Train_Neural_Network</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/Train_Neural_Network.m',47,0)">line 47</a>)
+    scenarioName = scenarios/MovingAI_342_493298.mat;
+} 
+Train_Neural_Network(true,'learner.save',false);
