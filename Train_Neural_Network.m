@@ -69,6 +69,10 @@ function [] = Train_Neural_Network(load_existing, name, cont)
     loadedScenario = load(scenarioName);
     numMaps = length(loadedScenario.maps);
     numProblems = length(loadedScenario.problem);
+    %shuffle the problems deterministically so that maps are not presented
+    %sequentially
+    rng(12345);
+    loadedScenario.problem = loadedScenario.problem(randperm(numel(loadedScenario.problem))); 
     numProblemsPerMap = numProblems/numMaps;
     problemI = 1:numProblems;
     fprintf('Loaded %s\n\tmaps %d | problems %d, %0.1f per map\n',scenarioName,numMaps,numProblems,numProblemsPerMap);
