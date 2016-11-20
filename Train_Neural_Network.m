@@ -19,7 +19,7 @@ function [] = Train_Neural_Network(load_existing, name, cont)
 
     %% Control parameters
     errorRate = 0;
-    cutoff = 1000;
+    cutoff = 100;
 
     % Include backtracking
     %geneMin = [1, 1, 0, 0, 0, 1, 0, 0];
@@ -38,12 +38,13 @@ function [] = Train_Neural_Network(load_existing, name, cont)
     %scenarioName = 'scenarios/uniMap_342_1710.mat';
     %scenarioName = 'scenarios/uniMap_8_16.mat';
     %scenarioName = 'scenarios/uniMap_50_500.mat';
-    scenarioName = 'scenarios/uniMap_8_80.mat';
+    %scenarioName = 'scenarios/uniMap_8_80.mat';
     %scenarioName = 'scenarios/uniMap_200_10000.mat';
     %scenarioName = 'scenarios/uniMap_100_5000.mat';
     %scenarioName = 'scenarios/uniMap_100_20000.mat';
     %scenarioName = 'scenarios/uniMap_342_34200.mat';
     %scenarioName = 'scenarios/uniMap_342_17100.mat';
+    scenarioName = scenarios/MovingAI_342_493298.mat;
 
     [~, sName, ~] = fileparts(scenarioName);
 

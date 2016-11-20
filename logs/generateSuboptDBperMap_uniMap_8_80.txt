@@ -1,6 +1,6 @@
-generateSuboptDBperMap.m |    19-Nov-2016 16:44:18
+generateSuboptDBperMap.m |    20-Nov-2016 09:35:53
 
 Scenario uniMap_8_80
 error STD 0.0
-cutoff 1.0K
+cutoff 100
 
