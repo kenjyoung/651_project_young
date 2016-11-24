@@ -207,7 +207,7 @@ class Learner:
 
     def select_action(self, state, explore=True):
         state = np.asarray(state, dtype=theano.config.floatX).reshape(input_shape)
-        return list(np.clip(self._select_action(state)*([1+(np.random.normal(scale=0.5) if explore else 0) for i in range(num_params)]), 0, 1))
+        return list(np.clip(self._select_action(state)+[(np.random.normal(scale=0.1) if explore else 0) for i in range(num_params)], 0, 1))
 
     def evaluate_action(self, state, action):
         state = np.asarray(state, dtype = theano.config.floatX).reshape(input_shape)
