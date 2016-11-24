@@ -26,7 +26,7 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
 
     % As long as we haven't reached the goal and haven't run out of quota
     while i ~= iGoal && distTraveled < cutOff
-        [startx, starty] = ind2sub(mapSize, i);
+        [starty, startx] = ind2sub(mapSize, i);
         start = struct('x', startx, 'y', starty);
         state = build_state(map, start, goal, h, h0);
         action = cell2mat(cell(select_action(learner, state)));
