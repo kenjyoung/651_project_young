@@ -1,4 +1,4 @@
-function [subopt, sc, solved] = traineddaDRTAAEvalVis(learner,problem,maps,n,cutoff,errorRate,da,depth,commit)
+function [subopt, sc, solved] = traineddaDRTAAEvalVis(learner,problem,maps,n,cutoff,errorRate)
     %% Evaluates a gene on a given problem and displays it
     % Vadim Bulitko
     % Oct 14, 2016
@@ -21,7 +21,7 @@ function [subopt, sc, solved] = traineddaDRTAAEvalVis(learner,problem,maps,n,cut
     iStart = sub2ind(size(map),p.start.y,p.start.x);
 
     %% Run the algorithm
-    [solution, sc, solved] =  traineddaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,commit,true);
+    [solution, sc, solved] =  traineddaDRTAA(learner,iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,true);
 
     subopt = solution / hs;
 

@@ -14,7 +14,7 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
     mapSize = size(map);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
     da_max = 10;
-    depth_max = 10;
+    depth_max = 50;
     %iPrevious = ones(1,0); % = []
     %coder.varsize('iPrevious',[1, Inf], [0, 1]);
     %iPreviousCost = ones(1,0);   % = []                   
@@ -47,9 +47,13 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
         nVisits(i) = nVisits(i) + 1;
         if(visualize)
             cla
+            params = sprintf('depth:%d, commit:%d, da:%0.2f',depth, commit, da);
             displayMap(map, h-h0, [0 0 1], false);
             [current.y, current.x] = ind2sub(mapSize, i);
             dispStartGoal(current, goal);
+            t=text(current.x, current.y, params);
+            t.Color='red';
+            t.FontSize=16;
             drawnow
         end
 
