@@ -1,4 +1,4 @@
-visualizeULRTA.m |    19-Nov-2016 16:26:08
+visualizeULRTA.m |    24-Nov-2016 20:58:13
 
 Scenario yngvi_5
 error STD 0.0
@@ -7,145 +7,24 @@ cutoff 1.0K
 Loaded scenarios/yngvi_5.mat
 	maps 1 | problems 5, 5.0 per map
 
-Running problem 3
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('clo', '/usr/local/MATLAB/R2016b/toolbox/matlab/graphics/private/clo.m', 48)" style="font-weight:bold">clo</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2016b/toolbox/matlab/graphics/private/clo.m',48,0)">line 48</a>)
+Running problem 2
+{Attempt to execute SCRIPT pq_create as a
+function:
+/Users/kenny_789/CMPUT651/cmput651testbedF16/priority_queue/pq_create.m
 
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Astar', '/Users/kenny_789/CMPUT651/cmput651testbedF16/Astar.m', 17)" style="font-weight:bold">Astar</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/Astar.m',17,0)">line 17</a>)
+    open = pq_create(max_index);
 
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('cla', '/usr/local/MATLAB/R2016b/toolbox/matlab/graphics/cla.m', 31)" style="font-weight:bold">cla</a> (<a href="matlab: opentoline('/usr/local/MATLAB/R2016b/toolbox/matlab/graphics/cla.m',31,0)">line 31</a>)
-clo(ax, extra{:});
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA', '/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m', 33)" style="font-weight:bold">daDRTAA</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAA.m',33,0)">line 33</a>)
+        [best, closed, open, p, g,
+        unreachable] = Astar(i, map, goal,
+        neighborhoodI, gCost, errorRate, h,
+        depth);
 
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAA', '/home/kenny/CMPUT651/651_project_young/daDRTAA.m', 26)" style="font-weight:bold">daDRTAA</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/daDRTAA.m',26,0)">line 26</a>)
-            cla
-
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAAEvalVis', '/home/kenny/CMPUT651/651_project_young/daDRTAAEvalVis.m', 24)" style="font-weight:bold">daDRTAAEvalVis</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/daDRTAAEvalVis.m',24,0)">line 24</a>)
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('daDRTAAEvalVis', '/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAAEvalVis.m', 24)" style="font-weight:bold">daDRTAAEvalVis</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/daDRTAAEvalVis.m',24,0)">line 24</a>)
     [solution, sc, solved] =
     daDRTAA(iStart,map,goal,neighborhoodI,gCost,h,errorRate,maxTravel,da,depth,commit,true);
     
-In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('visualizedaDRTAA', '/home/kenny/CMPUT651/651_project_young/visualizedaDRTAA.m', 56)" style="font-weight:bold">visualizedaDRTAA</a> (<a href="matlab: opentoline('/home/kenny/CMPUT651/651_project_young/visualizedaDRTAA.m',56,0)">line 56</a>)
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('visualizedaDRTAA', '/Users/kenny_789/CMPUT651/cmput651testbedF16/visualizedaDRTAA.m', 56)" style="font-weight:bold">visualizedaDRTAA</a> (<a href="matlab: opentoline('/Users/kenny_789/CMPUT651/cmput651testbedF16/visualizedaDRTAA.m',56,0)">line 56</a>)
 [subopt,~,solved] =
 daDRTAAEvalVis(loadedScenario.problem,loadedScenario.maps,problemI,cutoff,errorRate,da,depth,commit);} 
-JavaSceneServerPeer problem: Couldn't create JOGL canvas--using painters
-Test_Neural_Network(false,'',false)
-{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('Test_Neural_Network')" style="font-weight:bold">Test_Neural_Network</a>
-Too many input arguments.
-} 
-Test_Neural_Network(false,'')
