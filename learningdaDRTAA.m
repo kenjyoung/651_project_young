@@ -16,10 +16,8 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     da_max = 10;
     depth_max = 50;
     speed = 10; %distance units per second, balances suboptimality with GAT
-    %iPrevious = ones(1,0); % = []
-    %coder.varsize('iPrevious',[1, Inf], [0, 1]);
-    %iPreviousCost = ones(1,0);   % = []                   
-    %coder.varsize('iPreviousCost',[1, Inf], [0, 1]);
+    timeout = 1800; %don't allow one episode to last more than 30 min
+    t_round = tic;
     distTraveled = 0;
     h0 = h;
     nVisits = zeros(mapSize);
@@ -29,8 +27,8 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     start = struct('x', startx, 'y', starty);
     new_state = build_state(map, start, goal, h, h0);
     % As long as we haven't reached the goal and haven't run out of quota
-    while i ~= iGoal && distTraveled < cutOff
-        tic;
+    while i ~= iGoal && distTraveled < cutOff && toc(t_round) < timeout
+        t_step = tic;
         state = new_state;
         action = cell2mat(cell(select_action(learner, state)));
         
@@ -100,7 +98,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
            totalLearning = totalLearning + updateMagnitude;
            h = setH(s, hnew, h, errorRate);
         end
-        reward = -(toc+g(i)/speed);
+        reward = -(toc(t_step)+g(i)/speed);
         if(i ~= iGoal)
             terminal = 0;
         else
@@ -118,7 +116,7 @@ function [distTraveled, meanScrubbing, solved] = learningdaDRTAA(learner,i,map,g
     %% Compute scrubbing
     nVisitsNZ = nVisits(nVisits > 0);
     meanScrubbing = mean(nVisitsNZ);
-    solved = distTraveled <= cutOff;
+    solved = distTraveled <= cutOff && toc(t_round) < timeout;
 
 end
 
