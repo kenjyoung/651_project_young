@@ -1,0 +1,2 @@
+-run trained network and 10 random networks on uniMap_8_80 gether states on return, subopt and time, compute total time both with and without network calls
+-also run with constant saturated values since the network seems to learn to saturate most of the time

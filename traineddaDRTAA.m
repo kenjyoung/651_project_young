@@ -29,7 +29,7 @@ function [distTraveled, meanScrubbing, solved] = traineddaDRTAA(learner,i,map,go
         [starty, startx] = ind2sub(mapSize, i);
         start = struct('x', startx, 'y', starty);
         state = build_state(map, start, goal, h, h0);
-        action = cell2mat(cell(select_action(learner, state)));
+        action = cell2mat(cell(select_action(learner, state, false)));
         
         da = action(1)*da_max;
         depth = ceil(action(2)*depth_max);

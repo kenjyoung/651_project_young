@@ -7,13 +7,13 @@ if count(py.sys.path,'learner') == 0
 end
 
 import py.learner.Learner;
-learn = py.learner.Learner();
+learn = py.learner.Learner('learner.save');
 
 %% Control parameters
 errorRate = 0;
 cutoff = 1000;
 
-scenarioName = 'scenarios/yngvi_5.mat';
+scenarioName = 'scenarios/8_80_test.mat';
 
 fPos = [100 95 1280 720];
 fig = figure('Position',fPos);

@@ -1,9 +1,19 @@
 from learner import Learner
 import numpy as np
 
-learn = Learner()
+i_max = 32
 
-i_max = 64
+learn = Learner()
+state = np.random.rand(7, 128, 128)
+action = learn.select_action(state, False)
+value = learn.evaluate_action(state, action)
+
+learn_prime = Learner()
+action_prime = learn_prime.select_action(state, False)
+value_prime = learn_prime.evaluate_action(state, action)
+
+assert(np.linalg.norm(np.asarray(value)-np.asarray(value_prime))>0.0001)
+assert(np.linalg.norm(np.asarray(action)-np.asarray(action_prime))>0.0001)
 
 print("running with constant reward=(action[0]-action[1])")
 for i in range(i_max+1):
@@ -45,4 +55,3 @@ value2 = learn2.evaluate_action(state, action)
 
 assert(np.linalg.norm(np.asarray(value)-np.asarray(value2))>0.0001)
 assert(np.linalg.norm(np.asarray(action)-np.asarray(action2))>0.0001)
-

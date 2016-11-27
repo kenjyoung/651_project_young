@@ -1,9 +1,8 @@
-function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
-    addpath('priority_queue')
+function [best, closed, open, p, g, unreachable] = Astar(i, map, goal, neighborhoodI, gCost, errorRate, h, k)
+    
 
     unreachable = false;
     mapSize = size(map);
-    max_index = mapSize(1)*mapSize(2);
     iGoal = sub2ind(mapSize,goal.y,goal.x);
     g = containers.Map('KeyType', 'uint32', 'ValueType', 'double');
     p = containers.Map('KeyType', 'uint32', 'ValueType', 'double'); %parent
@@ -14,17 +13,19 @@ function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neig
     
     closed = [];
     
-    open = pq_create(max_index);
+    open = [];
+    open_value = [];
     
-    pq_push(open,i,getH(i,h,errorRate));
+    open(end+1) = i;
+    open_value(end+1) = getH(i,h,errorRate);
     
     expansions = 0;
-    while ((expansions < k) && ~isequal(pq_size(open),0) && i ~= iGoal)
+    while ((expansions < k) && ~isequal(size(open,2),0) && i ~= iGoal)
         % Remove min f value from open list
-        i = pq_pop(open);
-        if any(i == closed)
-           continue 
-        end
+        [~, open_index] = min(open_value);
+        open_value(open_index) = [];
+        i = open(open_index);
+        open(open_index) = [];
         closed(end+1) = i;
         
         expansions = expansions + 1;
@@ -37,32 +38,32 @@ function [best, closed, open_list, p, g, unreachable] = Astar(i, map, goal, neig
         hN = getH(iN,h,errorRate);
         
         % Update neighbors and open list
-        for j=1:length(iN)
+        for j=1:size(iN,2)
            n = iN(j);
            if ~any(n == closed) && (~isKey(g,n) || g(n) > g(i) + gN(j))
               g(n) = g(i)+gN(j);
               p(n) = i;
+              %d(n) = d(i)+1;
+              
+              %Remove any existing copies of n from open list
+              existing = open==n;
+              open(existing) = [];
+              open_value(existing) = [];
 
               %Add n to open list with new f value
-              pq_push(open,n,-(g(n)+hN(j)));
+              open(end+1) = n;
+              open_value(end+1) = g(n)+hN(j);
            end
         end
     end
-
-    if(isequal(pq_size(open),0) && i ~= iGoal)
+    
+    if(isequal(size(open,2),0) && i ~= iGoal)
         unreachable = true;
         return
     end
-
-    [i, best] = pq_pop(open);
-    best = -best;
-    num_elements = pq_size(open);
-    open_list = [i];
-    for j=1:num_elements
-        open_list(end+1) = pq_pop(open);
-    end
-    pq_delete(open);
-
+    
+    best = min(open_value);
+    
 %      path = [best_state];
 %      curr = best_state;
 %      prev = p(curr);
